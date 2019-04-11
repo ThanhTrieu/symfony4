@@ -1,0 +1,124 @@
+lastest_post_ajax:
+    path:     /ajax/lastest-posts
+    defaults: {_controller: App\Controller\Post\AjaxController::getLastestPosts}
+news_ajax_cate:
+    path:     /ajax/category
+    defaults: {_controller: App\Controller\Category\AjaxController::ajax}
+page_detail:
+  path: /{pageSlug}-pg{page_id}
+  defaults: {_controller: App\Controller\Post\IndexController::postAll}
+  requirements:
+    pageSlug: "[a-z0-9\\-]+"
+    page_id: "\\d+"
+news_tag:
+    path:     /{tagSlug}.html
+    defaults: {_controller: App\Controller\Tag\TagController::list}
+    requirements:
+        tagSlug: "[a-z0-9\\-_]+"
+    options:
+            utf8: true
+news_ajax_tag:
+    path:     /ajax/tag
+    defaults: {_controller: App\Controller\Tag\AjaxController::ajax}
+news_author:
+    path:     /author/{authorSlug}
+    defaults: {_controller: App\Controller\Author\AuthorController::list}
+    requirements:
+        authorSlug: "[a-z0-9\\-_]+"
+news_ajax_author:
+    path:     /ajax/author
+    defaults: {_controller: App\Controller\Author\AjaxController::ajax}
+news_detail_preview:
+    path:     /preview-{postId}
+    defaults: {_controller: App\Controller\Post\IndexController::preview}
+    requirements:
+        slug: "[a-z0-9\\-_‘’%]+"
+        postId: "\\d+"
+    options:
+        utf8: true
+news_detail:
+    path:     /{slug}-p{postId}
+    defaults: {_controller: App\Controller\Post\IndexController::detail}
+    requirements:
+        slug: "[a-z0-9\\-_‘’%]+"
+        postId: "\\d+"
+    options:
+        utf8: true
+news_detail_amp:
+    path:     /{slug}-p{postId}/amp
+    defaults: {_controller: App\Controller\Post\IndexController::detailAmp}
+    requirements:
+        slug: "[a-z0-9\\-_‘’%]+"
+        postId: "\\d+"
+    options:
+        utf8: true
+google_plus_ajax:
+    path:     /ajax/google-plus-ajax
+    defaults: {_controller: App\Controller\Post\IndexController::getGooglePlus}
+update_view:
+    path:  /lg.gif
+    defaults: {_controller: App\Controller\Post\AjaxController:updateView}
+
+check_post_news:
+  path:   /{postNameSlug}
+  defaults:  {_controller: App\Controller\Post\IndexController::changeToLinkPost }
+  requirements:
+    postNameSlug: maruti-vitara-brezza-petrol|mahindra-reva-nxr
+
+check_page_news:
+  path:   /{pageNameSlug}
+  defaults:  {_controller: App\Controller\Post\IndexController::changeToLinkPage }
+  requirements:
+    pageNameSlug: submit-spy-shots-and-get-bragging-rights|upcoming-cars-in-india|share-your-custom-car-bike|yamaha-yzf-r15-version-3|new-honda-civic-2017-india|2018-hyundai-i20-facelift-india|best-mileage-cars-india|ktm-390-duke-2017-analysis|hyundai-carlino-compact-suv-launch-price|camber-racing-cr14-137099-2|ford-ecosport-2017-facelift|new-2018-maruti-ertiga-yha|tata-nexon-launch-price|new-maruti-swift-2017|new-hyundai-verna-2017|mahindra-kuv100-2017-facelift|mahindra-scorpio-2017-facelift|toyota-rush-india|spotted-a-test-mule-win-some-hot-cash|maruti-vitara-brezza-petrol|2018-honda-amaze|mahindra-tuv300-xl-tuv500|renault-captur-india-price-launch-date-details-photos|maruti-s-cross-2017-facelift|mahindra-xuv500-2017-facelift|2018-hyundai-creta-facelift|maruti-baleno-rs
+
+check_page_news_level:
+  path:   /{pageNameSlug}/{nameSlugLevel}
+  defaults:  {_controller: App\Controller\Post\IndexController::changeToLinkPage }
+  requirements:
+    nameSlug: upcoming-cars-in-india|camber-racing-cr14-137099-2
+    nameSlugLevel: mahindra-scorpio-2017-facelift|2018-hyundai-i20-facelift-india|ford-ecosport-2017-facelift|maruti-s-cross-2017-facelift|maruti-s-cross-2017-facelift|new-2018-maruti-ertiga-yha|new-maruti-swift-2017|new-honda-civic-2017-india|2018-hyundai-creta-facelift|maruti-vitara-brezza-petrol|mahindra-kuv100-2017-facelift|hyundai-carlino-compact-suv-launch-price|2018-honda-amaze|mahindra-xuv500-2017-facelift|new-hyundai-verna-2017|mahindra-tuv300-xl-tuv500|2018-hyundai-creta-facelift|renault-captur-india-price-launch-date-details-photos|tata-nexon-launch-price|toyota-rush-india|new-maruti-swift-2017
+
+check_page_news_leve2:
+  path:   /{pageNameSlug}/{nameSlugLevel}/{nameSlugLevel2}
+  defaults:  {_controller: App\Controller\Post\IndexController::changeToLinkPage }
+  requirements:
+    nameSlug: upcoming-cars-in-india|camber-racing-cr14-137099-2
+    nameSlugLevel: maruti-s-cross-2017-facelift|new-hyundai-verna-2017|2018-hyundai-creta-facelift|new-maruti-swift-2017
+    nameSlugLevel2: maruti-s-cross-specifications|hyundai-verna-specifications|hyundai-creta-specifications|maruti-swift-specifications
+
+news_cate_amp:
+  path:  /{cateSlug}/amp
+  defaults: {_controller: App\Controller\Category\IndexController::ampCate}
+  requirements:
+    cateSlug: "[a-z0-9\\-]+"
+news_sub_cate_amp:
+  path:     /{parentSlug}/{cateSlug}/amp
+  defaults: {_controller: App\Controller\Category\IndexController::ampCate}
+  requirements:
+    parentSlug: "[a-z0-9\\-]+"
+    cateSlug: "[a-z0-9\\-]+"
+news_sub_cate_level2_amp:
+  path:     /{rootSlug}/{parentSlug}/{cateSlug}/amp
+  defaults: {_controller: App\Controller\Category\IndexController::ampCate}
+  requirements:
+    rootSlug: "[a-z0-9\\-]+"
+    parentSlug: "[a-z0-9\\-]+"
+    cateSlug: "[a-z0-9\\-]+"
+news_cate:
+    path:  /{cateSlug}
+    defaults: {_controller: App\Controller\Category\IndexController::list}
+    requirements:
+        cateSlug: "[a-z0-9\\-]+"
+news_sub_cate:
+    path:     /{parentSlug}/{cateSlug}
+    defaults: {_controller: App\Controller\Category\IndexController::list}
+    requirements:
+        parentSlug: "[a-z0-9\\-]+"
+        cateSlug: "[a-z0-9\\-]+"
+news_sub_cate_level2:
+    path:     /{rootSlug}/{parentSlug}/{cateSlug}
+    defaults: {_controller: App\Controller\Category\IndexController::list}
+    requirements:
+        rootSlug: "[a-z0-9\\-]+"
+        parentSlug: "[a-z0-9\\-]+"
+        cateSlug: "[a-z0-9\\-]+"

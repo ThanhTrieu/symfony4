@@ -1,0 +1,378 @@
+old_rss_category:
+    path:     /category/{cateSlug}/feed
+    defaults: {_controller: App\Controller\RedirectController:cateRssRedirect}
+    requirements:
+        cateSlug: "[a-z0-9\\-]+"
+
+old_rss_sub_cate:
+    path:     /category/{parentSlug}/{cateSlug}/feed
+    defaults: {_controller: App\Controller\RedirectController:cateRssRedirect}
+    requirements:
+        parentSlug: "[a-z0-9\\-]+"
+        cateSlug: "[a-z0-9\\-]+"
+
+old_rss_sub_cate_level2:
+    path:     /category/{rootSlug}/{parentSlug}/{cateSlug}/feed
+    defaults: {_controller: App\Controller\RedirectController:cateRssRedirect}
+    requirements:
+        rootSlug: "[a-z0-9\\-]+"
+        parentSlug: "[a-z0-9\\-]+"
+        cateSlug: "[a-z0-9\\-]+"
+old_rss_tag:
+    path:     /tag/{tagSlug}/feed
+    defaults: {_controller: App\Controller\RedirectController:tagsRssRedirect}
+    requirements:
+        tagSlug: "[a-z0-9\\-]+"
+
+old_rss_detail_news:
+    path:     /{year}/{month}/{slug}-{postId}/feed
+    defaults: {_controller: App\Controller\RedirectController:detailFeedRedirect}
+    requirements:
+        year: "\\d{4}"
+        month: "\\d{2}"
+        slug: "[a-z0-9\\-‘’%]+"
+        postId: "\\d+"
+    options:
+        utf8: true
+
+old_rss_news_detail_gallery:
+    path:     /{year}/{month}/{slug}-{postId}/{imageSlug}/feed
+    defaults: {_controller: App\Controller\RedirectController:detailFeedRedirect}
+    requirements:
+        year: "\\d{4}"
+        month: "\\d{2}"
+        slug: "[a-z0-9\\-‘’%]+"
+        postId: "\\d+"
+        imageSlug: "[a-z0-9\\-_]+"
+    options:
+        utf8: true
+old_rss_news_detail_gallery_slug:
+    path:     /{year}/{month}/{slug}/{imageSlug}/feed
+    defaults: {_controller: App\Controller\RedirectController:postSlug}
+    requirements:
+        year: "\\d{4}"
+        month: "\\d{2}"
+        slug: "[a-z0-9\\-‘’%]+"
+        postId: "\\d+"
+        imageSlug: "[a-z0-9\\-_]+"
+    options:
+        utf8: true
+# News
+news_staging:
+    path:     /staging/{slug}
+    defaults: {_controller: App\Controller\RedirectController:home}
+    requirements:
+        slug: ".*"
+latest_paging:
+    path:    /page/{currentPage}
+    defaults: {_controller: App\Controller\RedirectController:home}
+    requirements:
+        currentPage: "\\d+"
+old_news_cate:
+    path:     /category/{cateSlug}
+    defaults: {_controller: App\Controller\RedirectController:cate}
+    requirements:
+        cateSlug: "[a-zA-Z0-9\\-]+"
+old_news_cate_paging:
+    path:     /category/{cateSlug}/page/{currentPage}
+    defaults: {_controller: App\Controller\RedirectController:cate}
+    requirements:
+        cateSlug: "[a-zA-Z0-9\\-]+"
+        currentPage: "\\d+"
+old_news_sub_cate:
+    path:     /category/{parentSlug}/{cateSlug}
+    defaults: {_controller: App\Controller\RedirectController:cateParent}
+    requirements:
+        parentSlug: "[a-z0-9\\-]+"
+        cateSlug: "[a-z0-9\\-]+"
+old_news_sub_cate_paging:
+    path:     /category/{parentSlug}/{cateSlug}/page/{currentPage}
+    defaults: {_controller: App\Controller\RedirectController:cateParent}
+    requirements:
+        parentSlug: "[a-z0-9\\-]+"
+        cateSlug: "[a-z0-9\\-]+"
+        currentPage: "\\d+"
+old_news_sub_cate_level2:
+    path:     /category/{rootSlug}/{parentSlug}/{cateSlug}
+    defaults: {_controller: App\Controller\RedirectController:cateParentLevel2}
+    requirements:
+        rootSlug: "[a-z0-9\\-]+"
+        parentSlug: "[a-z0-9\\-]+"
+        cateSlug: "[a-z0-9\\-]+"
+old_news_sub_cate_level2_paging:
+    path:     /category/{rootSlug}/{parentSlug}/{cateSlug}/page/{currentPage}
+    defaults: {_controller: App\Controller\RedirectController:cateParentLevel2}
+    requirements:
+        rootSlug: "[a-z0-9\\-]+"
+        parentSlug: "[a-z0-9\\-]+"
+        cateSlug: "[a-z0-9\\-]+"
+        currentPage: "\\d+"
+old_news_tag:
+    path:     /tag/{tagSlug}
+    defaults: {_controller: App\Controller\RedirectController:tag}
+    requirements:
+        tagSlug: "[a-z0-9\\-_%]+"
+old_news_tag_paging:
+    path:     /tag/{tagSlug}/page/{currentPage}
+    defaults: {_controller: App\Controller\RedirectController:tag}
+    requirements:
+        tagSlug: "[a-z0-9\\-]+"
+        currentPage: "\\d+"
+old_news_author_paging:
+    path:     /author/{username}/page/{currentPage}
+    defaults: {_controller: App\Controller\RedirectController:authorPaging}
+    requirements:
+        username: "[a-z0-9\\-_]+"
+        currentPage: "\\d+"
+old_news_year:
+    path:   /{year}
+    defaults: {_controller: App\Controller\RedirectController:home}
+    requirements:
+        year: "\\d{4}"
+old_news_year2:
+    path:   /{year}/{number}
+    defaults: {_controller: App\Controller\RedirectController:home}
+    requirements:
+        year: "\\d{4}"
+        number: "\\d+"
+old_news_year3:
+    path:   /{year}/{number}/page/{currentPage}
+    defaults: {_controller: App\Controller\RedirectController:home}
+    requirements:
+        year: "\\d{4}"
+        number: "\\d+"
+        currentPage: "\\d+"
+old_news_year_paging:
+    path:   /{year}/page/{currentPage}
+    defaults: {_controller: App\Controller\RedirectController:home}
+    requirements:
+        year: "\\d{4}"
+        currentPage: "\\d+"
+old_news_year_month:
+    path:   /{year}/{month}
+    defaults: {_controller: App\Controller\RedirectController:home}
+    requirements:
+        year: "\\d{4}"
+        month: "\\d{2}"
+old_news_year_month_paging:
+    path:   /{year}/{month}/page/{currentPage}
+    defaults: {_controller: App\Controller\RedirectController:home}
+    requirements:
+        year: "\\d{4}"
+        month: "\\d{2}"
+        currentPage: "\\d+"
+old_detail-amp:
+    path:     /{year}/{month}/{slug}-{postId}/amp
+    defaults: {_controller: App\Controller\RedirectController:detailAmp}
+    requirements:
+        year: "\\d{4}"
+        month: "\\d{2}"
+        slug: "[a-z0-9\\-_‘’%]+"
+        postId: "\\d+"
+    options:
+        utf8: true
+old_detail-amp-slug:
+    path:     /{year}/{month}/{slug}/amp
+    defaults: {_controller: App\Controller\RedirectController:postSlugAmp}
+    requirements:
+        year: "\\d{4}"
+        month: "\\d{2}"
+        slug: "[a-z0-9\\-_‘’%]+"
+    options:
+        utf8: true
+old_detail-comment-paging:
+    path:     /{year}/{month}/{slug}/comment-page-{page}
+    defaults: {_controller: App\Controller\RedirectController:postCommentPaging}
+    requirements:
+        year: "\\d{4}"
+        month: "\\d{2}"
+        slug: "[a-zA-Z0-9\\-‘’%]+"
+        page: "\\d+"
+    options:
+        utf8: true
+gallery-detail-comment-paging-postid:
+    path:     /{year}/{month}/{slug}-{postId}/{imageSlug}/comment-page-{page}
+    defaults: {_controller: App\Controller\RedirectController:postCommentPaging}
+    requirements:
+        year: "\\d{4}"
+        month: "\\d{2}"
+        slug: "[a-zA-Z0-9\\-‘’%]+"
+        postId: "\\d+"
+        imageSlug: "[a-zA-Z0-9\\-‘’%]+"
+        page: "\\d+"
+    options:
+        utf8: true
+gallery-detail-comment-paging:
+    path:     /{year}/{month}/{slug}/{imageSlug}/comment-page-{page}
+    defaults: {_controller: App\Controller\RedirectController:postCommentPaging}
+    requirements:
+        year: "\\d{4}"
+        month: "\\d{2}"
+        slug: "[a-zA-Z0-9\\-_‘’%]+"
+        imageSlug: "[a-zA-Z0-9\\-‘’%]+"
+        page: "\\d+"
+    options:
+        utf8: true
+old_news_detail_gallery:
+    path:     /{year}/{month}/{slug}-{postId}/{imageSlug}
+    defaults: {_controller: App\Controller\RedirectController:postCommentPaging}
+    requirements:
+        year: "\\d{4}"
+        month: "\\d{2}"
+        postId: "\\d+"
+        slug: "[a-z0-9\\-_‘’%]+"
+        imageSlug: "[a-z0-9\\-_]+"
+    options:
+        utf8: true
+old_news_detail_gallery_old:
+    path:     /{year}/{month}/{slug}/{imageSlug}
+    defaults: {_controller: App\Controller\RedirectController:imagePostSlug}
+    requirements:
+        year: "\\d{4}"
+        month: "\\d{2}"
+        slug: "[a-z0-9\\-_‘’%]+"
+        imageSlug: "[a-z0-9\\-_]+"
+    options:
+        utf8: true
+old_news_detail:
+    path:     /{year}/{month}/{slug}-{postId}
+    defaults: {_controller: App\Controller\RedirectController:detail}
+    requirements:
+        year: "\\d{4}"
+        month: "\\d{2}"
+        slug: "[a-z0-9\\-_‘’%]+"
+        postId: "\\d+"
+    options:
+        utf8: true
+old_news_detail1:
+    path:     /{year}/{year1}/{month}/{slug}
+    defaults: {_controller: App\Controller\RedirectController:postSlug}
+    requirements:
+        year: "\\d{4}"
+        year1: "\\d{4}"
+        month: "\\d{2}"
+        slug: "[a-z0-9\\-_‘’%]+"
+        postId: "\\d+"
+    options:
+        utf8: true
+old_news_detail2:
+    path:     /{year}/{year1}/{month}/{slug}-{postId}
+    defaults: {_controller: App\Controller\RedirectController:detail}
+    requirements:
+        year: "\\d{4}"
+        year1: "\\d{4}"
+        month: "\\d{2}"
+        slug: "[a-z0-9\\-_‘’%]+"
+        postId: "\\d+"
+    options:
+        utf8: true
+old_news_detail3:
+    path:     /{year}/{year1}/{month}/{slug}/{slug2}
+    defaults: {_controller: App\Controller\RedirectController:postSlug}
+    requirements:
+        year: "\\d{4}"
+        year1: "\\d{4}"
+        month: "\\d{2}"
+        slug: "[a-z0-9\\-_‘’%]+"
+        slug2: "[a-z0-9\\-_‘’%]+"
+    options:
+        utf8: true
+old_news_detail4:
+    path:     /{year}/{month}/{year1}/{month1}/{slug}
+    defaults: {_controller: App\Controller\RedirectController:postSlug}
+    requirements:
+        year: "\\d{4}"
+        month: "\\d{2}"
+        year1: "\\d{4}"
+        month1: "\\d{2}"
+        slug: "[a-z0-9\\-_‘’%]+"
+    options:
+        utf8: true
+old_news_detail5:
+    path:     /{year}/{month}/{year1}/{month1}/{slug}/{slug1}
+    defaults: {_controller: App\Controller\RedirectController:postSlug}
+    requirements:
+        year: "\\d{4}"
+        month: "\\d{2}"
+        year1: "\\d{4}"
+        month1: "\\d{2}"
+        slug: "[a-z0-9\\-_‘’%]+"
+        slug1: "[a-z0-9\\-_‘’%]+"
+    options:
+        utf8: true
+old_news_detail6:
+    path:     /{year}/{month}/{slug}/attachment/{id_attachment}
+    defaults: {_controller: App\Controller\RedirectController:postSlug}
+    requirements:
+        year: "\\d{4}"
+        month: "\\d{2}"
+        year1: "\\d{4}"
+        month1: "\\d{2}"
+        slug: "[a-z0-9\\-_‘’%]+"
+        id_attachment: "\\d+"
+    options:
+        utf8: true
+old_news_detail7:
+    path:     /{year}/{month}/{slug}-{postId}/attachment/{id_attachment}
+    defaults: {_controller: App\Controller\RedirectController:detail}
+    requirements:
+        year: "\\d{4}"
+        month: "\\d{2}"
+        year1: "\\d{4}"
+        month1: "\\d{2}"
+        slug: "[a-z0-9\\-_‘’%]+"
+        postId: "\\d+"
+        id_attachment: "\\d+"
+    options:
+        utf8: true
+old_news_detail8:
+    path:     /tag/{year}/{month}/{slug}/{slug1}
+    defaults: {_controller: App\Controller\RedirectController:postSlug}
+    requirements:
+        year: "\\d{4}"
+        month: "\\d{2}"
+        slug: "[a-z0-9\\-_‘’%]+"
+        slug1: "[a-z0-9\\-_‘’%]+"
+    options:
+        utf8: true
+old_news_detail9:
+    path:     /tag/{year}/{month}/{slug}
+    defaults: {_controller: App\Controller\RedirectController:postSlug}
+    requirements:
+        year: "\\d{4}"
+        month: "\\d{2}"
+        slug: "[a-z0-9\\-_‘’%]+"
+    options:
+        utf8: true
+old_news_detail10: #/2009/category/fiat/2009/04/rendering-2010-fiat-uno-2
+    path:     /{year}/category/fiat/{year1}/{month}/{slug}
+    defaults: {_controller: App\Controller\RedirectController:postSlug}
+    requirements:
+        year: "\\d{4}"
+        year1: "\\d{4}"
+        month: "\\d{2}"
+        slug: "[a-z0-9\\-_‘’%]+"
+    options:
+        utf8: true
+old_news_detail_slug:
+    path:     /{year}/{month}/{slug}
+    defaults: {_controller: App\Controller\RedirectController:postSlug}
+    requirements:
+        year: "\\d{4}"
+        month: "\\d{2}"
+        slug: "[a-zA-Z0-9\\-‘’%]+"
+    options:
+        utf8: true
+#sub_page_detail:
+#    path:     /{parentSlug}/{pageSlug}
+#    defaults: {_controller: NewsBundle:Page/Index:postAll}
+#    requirements:
+#        parentSlug: "[a-zA-Z0-9\\-]+"
+#        pageSlug: "[a-z0-9\\-‘’%]+"
+#    options:
+#        utf8: true
+#page_detail:
+#    path:     /{pageSlug}
+#    defaults: {_controller: NewsBundle:Page\Index:postAll}
+#    requirements:
+#        pageSlug: "[a-z0-9\\-_]+"

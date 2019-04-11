@@ -1,0 +1,69 @@
+/*@font-face {
+	font-family: 'Montserrat';
+	src: url('../font/Montserrat-Regular.woff');
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Montserrat Medium';
+	src: url('../font/Montserrat-Medium.woff');
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Montserrat Light';
+	src: url('../font/Montserrat-Light.woff');
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Montserrat Bold';
+	src: url('../font/Montserrat-Bold.woff');
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Montserrat SemiBold';
+	src: url('../font/Montserrat-SemiBold.woff');
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Montserrat ExtraBold';
+	src: url('../font/Montserrat-ExtraBold.otf');
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Montserrat Italic';
+	src: url('../font/Montserrat-Italic.woff');
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Montserrat ExtraBold Italic';
+	src: url('../font/Montserrat-ExtraBoldItalic.woff');
+	font-style: normal;
+}
+*/
+
+@font-face {
+	font-family: 'Poppins Regular';
+	src: url('../font/Poppins-Regular.ttf');
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Poppins Bold';
+	src: url('../font/Poppins-Bold.ttf');
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Poppins Medium';
+	src: url('../font/Poppins-Medium.ttf');
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Poppins SemiBold';
+	src: url('../font/Poppins-SemiBold.ttf');
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Poppins Italic';
+	src: url('../font/Poppins-Italic.ttf');
+	font-style: normal;
+}

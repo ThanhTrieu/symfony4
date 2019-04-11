@@ -1,0 +1,96 @@
+# RSS & Sitemap routers
+site_map:
+    path:      /sitemap_index.xml
+    defaults:  { _controller: App\Controller\SitemapController::sitemap }
+site_map_check:
+    path:      /check_sitemap.html
+    defaults:  { _controller: App\Controller\SitemapController::checkSitemap }
+site_map_category:
+    path:      /sitemaps/category.xml
+    defaults:  { _controller: App\Controller\SitemapController::category }
+site_map_category_article:
+    path:      /sitemaps/article-{date}.xml
+    defaults:  { _controller: App\Controller\SitemapController::article }
+    requirements:
+            date: "\\d{6}"
+site_map_tags:
+    path:      /tags-sitemap.xml
+    defaults:  { _controller: App\Controller\SitemapController::tags }
+site_map_author:
+    path:      /author-sitemap.xml
+    defaults:  { _controller: App\Controller\SitemapController::author }
+site_map_news:
+    path:      /news-sitemap.xml
+    defaults:  { _controller: App\Controller\SitemapController::siteMapNews }
+site_map_news_by_date:
+    path:      /news-sitemap/news-{date}.xml
+    defaults:  { _controller: App\Controller\SitemapController::newsDate }
+    requirements:
+            date: "\\d{6}"
+rss:
+    path:     /feed
+    defaults: {_controller: App\Controller\RssController::rssHome}
+    requirements:
+             map: "(rss|feed)"
+rss_tag:
+    path:     /{tagSlug}/feed.html
+    defaults: {_controller: App\Controller\RssController::tagsRss}
+    requirements:
+        tagSlug: "[a-z0-9\\-]+"
+
+rss_detail_news:
+    path:     /{slug}-p{postId}/feed
+    defaults: {_controller: App\Controller\RssController::detailFeed}
+    requirements:
+        slug: "[a-z0-9\\-‘’%]+"
+        postId: "\\d+"
+    options:
+        utf8: true
+rss_author:
+    path:   /author/{username}/feed
+    defaults: {_controller: App\Controller\RssController::authorRss}
+    requirements:
+        username: "[a-z0-9\\-_]+"
+rss_category:
+    path:     /{cateSlug}/feed
+    defaults: {_controller: App\Controller\RssController::cateRss}
+    requirements:
+        cateSlug: "[a-z0-9\\-]+"
+
+rss_sub_cate:
+    path:     /{parentSlug}/{cateSlug}/feed
+    defaults: {_controller: App\Controller\RssController::cateRss}
+    requirements:
+        parentSlug: "[a-z0-9\\-]+"
+        cateSlug: "[a-z0-9\\-]+"
+
+rss_sub_cate_level2:
+    path:     /category/{rootSlug}/{parentSlug}/{cateSlug}/feed
+    defaults: {_controller: App\Controller\RssController::cateRss}
+    requirements:
+        rootSlug: "[a-z0-9\\-]+"
+        parentSlug: "[a-z0-9\\-]+"
+        cateSlug: "[a-z0-9\\-]+"
+
+#rss_news_detail_gallery:
+#    path:     /{year}/{month}/{slug}-{postId}/{imageSlug}/feed
+#    defaults: {_controller: NewsBundle:Rss:detailGalleryFeed}
+#    requirements:
+#        year: "\\d{4}"
+#        month: "\\d{2}"
+#        slug: "[a-z0-9\\-‘’%]+"
+#        postId: "\\d+"
+#        imageSlug: "[a-z0-9\\-_]+"
+#    options:
+#        utf8: true
+#rss_news_detail_gallery_slug:
+#    path:     /{year}/{month}/{slug}/{imageSlug}/feed
+#    defaults: {_controller: NewsBundle:Rss:detailGalleryFeed}
+#    requirements:
+#        year: "\\d{4}"
+#        month: "\\d{2}"
+#        slug: "[a-z0-9\\-‘’%]+"
+#        postId: "\\d+"
+#        imageSlug: "[a-z0-9\\-_]+"
+#    options:
+#        utf8: true

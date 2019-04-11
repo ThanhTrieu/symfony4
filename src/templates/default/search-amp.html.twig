@@ -1,0 +1,28 @@
+{% extends 'amp.html.twig' %}
+
+{% block content %}
+    {% if data is not null %}
+        <section class="list-new2 pd-top-25 pd-bottom-28">
+            <h1 class="full-width main">Do you interest to keyword <span style="color: red">"{{ keyword | raw }}"</span>? Please use search function or refer list posts below:</h1>
+            <div class="main">
+                <ul class="list-news-2" id="search-main">
+                    {% for key, item in data %}
+                        <li>
+                            <a href="{{ item.url }}" class="img-sp" title="{{ item.title }}">
+                                <amp-img width="360" height="201" layout="responsive" src="{{ item.images }}" alt="{{ item.title }}"></amp-img>
+                            </a>
+                            <div class="info-car">
+                                <h3><a href="{{ item.url }}" class="name-pro" title="{{ item.title }}">{{ item.title }}</a></h3>
+                                <span class="date-creat"> <i class="fa fa-clock-o"></i> {{ item.published_date }}</span>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
+    {% else %}
+        <section id="notFoundData" class="list-new2 pd-top-25 pd-bottom-28">
+            <h1 class="main">Not found data with keyword - {{ keyword }}</h1>
+        </section>
+    {% endif %}
+{% endblock %}

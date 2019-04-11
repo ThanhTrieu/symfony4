@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{#{% block stylesheets %}
+    <link rel="stylesheet" href="/css/gallery/lightslider.css"/>
+    <link rel="stylesheet" href="/css/gallery/popup_slide.css"/>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="/js/galleries/lightslider.js"></script>
+    <script src="/js/galleries/popup_photo.js"></script>
+{% endblock %}#}
+
+{% block content %}
+    <section class="list-new2 pd-top-29">
+        <div class="container">
+            <div class="title-menu">
+                <h1 class="title-30-22">इमेजिस</h1>
+            </div>
+            <ul class="list-news-2 row display-ib images" id="pnlPostList">
+                {% include 'galleries/contentsphotos.html.twig' %}
+            </ul>
+            <div class="clear"></div>
+            {% if loadMoreToken  %}
+                <div class="text-center mg-bottom-98">
+                    <button id="btnLastestMore" class="btn btn-all" data-token="{{ loadMoreToken }}" data-url="{{ url_ajax_photos_list }}">Load more</button>
+                    <img id="imgMoreLoading" class="hidden" src="/images/loading.gif" title="Please wait while loading data" />
+                </div>
+            {% endif %}
+        </div>
+    </section>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <!-- The Close Button -->
+        <span class="close">&times;</span>
+
+        <!-- Modal Content -->
+        <div class="modal-content" id="modal-content"></div>
+
+        <div class="container" style="text-align: center;vert-align: middle">
+            <img id="imgMoreLoading2" class="hidden" src="/images/loading.gif" title="कृपया डेटा लोड करते समय प्रतीक्षा करें"/>
+        </div>
+
+        <!-- Modal Caption (Image Text) -->
+        <div id="caption"></div>
+    </div>
+    <input type="hidden" value="{{ url_ajax_photos }}" id="url_dataPopup">
+    <input type="hidden" value="{{ gallery_id }}" id="gallery_id">
+    <input type="hidden" value="{{ gallery_url }}" id="gallery_url">
+    <input type="hidden" value="{{ gallery_title }}" id="gallery_title">
+    <input type="hidden" value="{{ url_post }}" id="url_post">
+{% endblock %}

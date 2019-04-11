@@ -1,0 +1,30 @@
+{% if news_list is defined %}
+    {% for key, item in news_list %}
+        <li id="item-{{ item.id }}" class="col-xs-12 col-sm-6 col-md-4">
+            <a href="{{ item.url }}" class="img-sp" title="{{ item.title }}">
+                <img src="{{ item.avatar }}" alt="{{ item.title }}" />
+            </a>
+            <div class="info-car">
+                <h3 class="list-title">
+                    <a href="{{ item.url }}" class="name-pro" title="{{ item.title }}">{{ item.title }}</a>
+                </h3>
+                <a class="ic-user" href="{{ item.author_url }}" title="{{ item.author_name }}">
+                    <i class="icon-user"></i>
+                    {{ item.author_name }}
+                </a>
+                <span class="mg-9-10">|</span>
+                <span class="date-creat">
+                    <i class="icon-clock"></i> {{ item.s_publish_time }}
+                </span>
+                <div class="short-info">
+                    {{ item.sapo }}
+                </div>
+            </div>
+        </li>
+    {% endfor %}
+{% endif %}
+{% if flag is defined %}
+    {% block javascripts %}
+        <script type="text/javascript" src="/js/category/category.js"></script>
+    {% endblock %}
+{% endif %}

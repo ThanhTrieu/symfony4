@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <style type="text/css">
+        .error {
+            color: red !important;
+        }
+    </style>
+    <section class="list-new2 pd-top-29">
+        <div class="container">
+            <div class="title-menu">
+                <h1 class="title-30-22 full-width">Contact us</h1>
+                {% if message is not null %}
+                    <h4> Thank you for your question, we will reply to you on the earliest time. </h4>
+                {% endif %}
+            </div>
+            <div class="detail-pri row">
+                <form action="{{ path('contact_sendmail') }}" method="post" id="customerEmail">
+                    <div class="left-ct col-xs-12 col-sm-6 col-md-7">
+                        <div class="control custom-input">
+                            <label> * Name</label>
+                            <input class="form-control" placeholder="Your name" name="txtName">
+                        </div>
+                        <div class="control custom-input">
+                            <label> * Mobile</label>
+                            <input class="form-control" placeholder="+91" name="txtPhone">
+                        </div>
+                        <div class="control custom-input">
+                            <label> * Email</label>
+                            <input class="form-control" placeholder="Your email" name="txtEmail">
+                        </div>
+                        <div class="control custom-input">
+                            <label> * Type your question here</label>
+                            <textarea name="tctQuestion"></textarea>
+                        </div>
+                        <button class="btn-194" type="submit" name="btnSendMail">Submit</button>
+                    </div>
+                </form>
+                <div class="right-ct col-xs-12 col-sm-6 col-md-5">
+                    <div class="f-rb">Andress</div>
+                    <span class="Blog">Indian Autos Blog</span>
+                    {#<span class="location"><i class="icon-location"></i>No 9, Second Street, Race View Colony, Guindy, Chennai 600032, Indian.</span>#}
+                    {#<span class="location"><i class="icon-mail"></i> shrawan@indianautosblog.com</span>#}
+                    <span class="location"><i class="icon-mail"></i>support@indianautosblog.com</span>
+                    <span class="location"><i class="icon-mail"></i>chauhanyatharth@indianautosblog.com</span>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+    {#<section class="list-new2 pd-top-29">#}
+        {#<div class="container">#}
+            {#<div class="title-menu">#}
+                {#<h1 class="title-30-22 full-width">Contact us</h1>#}
+                {#{% if message != null %}#}
+                    {#<h4> Thank you for your question, we will reply to you on the earliest time. </h4>#}
+                {#{% endif %}#}
+            {#</div>#}
+            {#<div class="row">#}
+                {#<div class="left-ct col-xs-12 col-sm-6 col-md-7">#}
+                    {#<form action="{{ path('contact_sendmail') }}" method="post" id="customerEmail">#}
+                        {#<div class="control custom-input">#}
+                            {#<label>* Name</label>#}
+                            {#<input type="text" class="form-control" placeholder="Your name" name="txtName">#}
+                        {#</div>#}
+                        {#<div class="control custom-input">#}
+                            {#<label>* Mobile</label>#}
+                            {#<input type="text" class="form-control" placeholder="+91" name="txtPhone">#}
+                        {#</div>#}
+                        {#<div class="control custom-input">#}
+                            {#<label>* Email</label>#}
+                            {#<input name="txtEmail" type="text" class="form-control" placeholder="Your Email">#}
+                        {#</div>#}
+                        {#<div class="control custom-input">#}
+                            {#<label>* Type your questions here</label>#}
+                            {#<textarea name="tctQuestion"></textarea>#}
+                        {#</div>#}
+                        {#<button class="btn-194" type="submit" name="btnSendMail">Submit</button>#}
+                    {#</form>#}
+                {#</div>#}
+                {#<div class="right-ct col-xs-12 col-sm-6 col-md-5">#}
+                    {#<div class="f-rb">Address</div>#}
+                    {# india#}
+                    {#<span class="Blog">Indian Autos Blog</span>#}
+                    {#<span class="location"><i class="icon-location"></i>No 9, Second Street, Race View Colony, Guindy, Chennai 600032, India.</span>#}
+                    {#<span class="location"><i class="icon-mail"></i> shrawan@indianautosblog.com</span>#}
+                {#</div>#}
+            {#</div>#}
+        {#</div>#}
+    {#</section>#}
+{% endblock %}
+{% block javascripts %}
+    <script src="/js/contact/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="js/contact/contact.js"></script>
+{% endblock %}

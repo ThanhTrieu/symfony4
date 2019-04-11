@@ -1,0 +1,52 @@
+# main route
+# TrieuNT add rss_sitemap
+
+index:
+    path: /
+    controller: App\Controller\DefaultController::index
+home_amp:
+    path: /amp
+    defaults: {_controller: App\Controller\AmpController:homeAmp}
+page404:
+    path: "/404"
+    defaults: {_controller: App\Controller\DefaultController:_404page}
+search:
+    path: /search
+    defaults: {_controller: App\Controller\SearchController::index}
+check_search_post:
+    path: /search/{keyword}
+    defaults: {_controller: App\Controller\SearchController::changToSearch}
+    requirements:
+        keyword: "[A-Za-z0-9\\-_‘’%+//?*.]+"
+    options:
+        utf8: "true"
+about:
+    path: /about
+    defaults: {_controller: App\Controller\DefaultController::about}
+privacy_policy:
+    path: /privacy-policy
+    defaults: {_controller: App\Controller\DefaultController::privacyPolicy}
+contact:
+    path: /contact-us
+    defaults: {_controller: App\Controller\DefaultController::contact}
+contact_sendmail:
+    path: /sendmail
+    defaults: {_controller: App\Controller\DefaultController::contactSendmail}
+redirect_all:
+    resource: "routes/redirect.yml"
+rss_sitemap_all:
+    resource: "routes/rss_sitemap.yml"
+galleries:
+    resource: "routes/galleries.yml"
+news_all:
+    resource: "routes/post.yml"
+#remove_trailing_slash:
+#    path: /{url}/
+#    defaults: { _controller: App\Controller\RedirectController:removeTrailingSlash }
+#    requirements:
+#        url: .+
+lowercase_slug:
+    path: /{slug}
+    defaults: { _controller: App\Controller\RedirectController:lowercaseSlug }
+    requirements:
+        slug: ".*[A-Z]+.*"

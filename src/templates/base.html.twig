@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {#<meta name="google-site-verification" content="1W5V-0vJJPYWyqC3rb2-6G0WiLfpobqfoOavaZdu5bY"/>#}
+    <meta name="verifyownership" content="bb1d51b2a1149cc6b942c74d4b92e4ff"/>
+    <meta property="fb:app_id" content="{{ facebook_app_id }}" />
+    <link rel="profile" href="https://gmpg.org/xfn/11">
+    <link rel="icon" href="/favicon.png" type="image/png">
+    <link rel="shortcut icon" href="/favicon.ico" type="img/x-icon">
+
+    {{ include('common/seo-tag.html.twig') }}
+    <link rel='dns-prefetch' href='//indianautosblog.com'/>
+    <link rel='dns-prefetch' href='//fonts.googleapis.com'/>
+    <link rel='dns-prefetch' href='//maxcdn.bootstrapcdn.com'/>
+    <link rel='dns-prefetch' href='//s.w.org'/>
+    <link rel="alternate" type="application/rss+xml" title="Indian Autos blog &raquo; Feed" href="{{ domain }}/feed"/>
+    {% if rss is defined %}<link rel="alternate" type="application/rss+xml" title="Indian Autos blog &raquo; {{ rss.title }}" href="{{ domain ~ rss.url }}"/>{% endif %}
+
+    <link rel="stylesheet" type="text/css" media="all" href="/css/reset.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="/css/font-rbt.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="/css/fontello.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="/css/basis.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="/css/lightslider.min.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="/css/slider.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="/css/style.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="/css/gallery/lightslider.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="/css/gallery/popup_slide.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="/css/gallery/lightgallery.min.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="/css/gallery/viewbox.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="/css/customs.css" />
+    {#<link rel="stylesheet" type="text/css" media="all" href="{{ static_url }}/css/iab.min.css?v={{ media_version }}" />#}
+
+    <!--[if IE]>
+    <link href="/css/all-ie-only.css" rel="stylesheet" type="text/css" />
+    <![endif]-->
+    {% block stylesheets %}
+    {% endblock %}
+    {#<link rel='https://api.w.org/' href='{{ domain }}/wp-json/'/>
+    <link rel="EditURI" type="application/rsd+xml" title="RSD" href="{{ domain }}/xmlrpc.php?rsd"/>
+    <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="{{ domain }}/wp-includes/wlwmanifest.xml"/>
+    <link rel="icon" href="{{ media_url }}/2017/07/favicon-32x32.png" sizes="32x32"/>#}
+    <link rel="icon" href="{{ media_url }}/2017/07/favicon.png" sizes="192x192"/>
+    <link rel="apple-touch-icon-precomposed" href="{{ media_url }}/2017/07/favicon.png"/>
+    <meta name="msapplication-TileImage" content="{{ media_url }}/2017/07/favicon.png"/>
+</head>
+<body>
+<div id="fb-root"></div>
+{% include "common/header.html.twig" %}
+{% block content %}{% endblock %}
+{% include "common/footer.html.twig" %}
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-7930986-2"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-7930986-2');
+
+    var facebookAppId = '{{ facebook_app_id }}';
+</script>
+<!-- One Signal -->
+<link rel="manifest" href="https://indianautosblog.com/manifest.json"/>
+{#<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>#}
+{#<script>#}
+    {#window.OneSignal = window.OneSignal || [];#}
+
+    {#OneSignal.push(function () {#}
+        {#/*OneSignal.SERVICE_WORKER_UPDATER_PATH = "OneSignalSDKUpdaterWorker.js.php";#}
+        {#OneSignal.SERVICE_WORKER_PATH = "OneSignalSDKWorker.js.php";*/#}
+        {#OneSignal.SERVICE_WORKER_PARAM = {scope: '/'};#}
+
+        {#OneSignal.setDefaultNotificationUrl("https://indianautosblog.com");#}
+        {#var oneSignal_options = {};#}
+        {#window._oneSignalInitOptions = oneSignal_options;#}
+
+        {#oneSignal_options['wordpress'] = true;#}
+        {#oneSignal_options['appId'] = '8273e98f-15fe-4fe7-91b5-c25b49e549a6';#}
+        {#oneSignal_options['autoRegister'] = true;#}
+        {#oneSignal_options['httpPermissionRequest'] = {};#}
+        {#oneSignal_options['httpPermissionRequest']['enable'] = true;#}
+        {#oneSignal_options['welcomeNotification'] = {};#}
+        {#oneSignal_options['welcomeNotification']['disable'] = true;#}
+        {#oneSignal_options['safari_web_id'] = "web.onesignal.auto.48c84a0b-cc60-468f-93c1-13b193c27b88";#}
+        {#oneSignal_options['persistNotification'] = true;#}
+        {#oneSignal_options['promptOptions'] = {};#}
+        {#OneSignal.init(window._oneSignalInitOptions);#}
+    {#});#}
+
+    {#function documentInitOneSignal() {#}
+        {#var oneSignal_elements = document.getElementsByClassName("OneSignal-prompt");#}
+
+        {#var oneSignalLinkClickHandler = function (event) {#}
+            {#OneSignal.push(['registerForPushNotifications']);#}
+            {#event.preventDefault();#}
+        {#};#}
+        {#for (var i = 0; i < oneSignal_elements.length; i++)#}
+            {#oneSignal_elements[i].addEventListener('click', oneSignalLinkClickHandler, false);#}
+    {#}#}
+
+    {#if (document.readyState === 'complete') {#}
+        {#documentInitOneSignal();#}
+    {#}#}
+    {#else {#}
+        {#window.addEventListener("load", function (event) {#}
+            {#documentInitOneSignal();#}
+        {#});#}
+    {#}#}
+{#</script>#}
+
+<script src="/js/jquery-3.3.1.min.js"></script>
+<script src="/js/galleries/lightslider.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search/search.js"></script>
+<script src="/js/galleries/popup_photo.js"></script>
+<script src="/js/common.js"></script>
+
+<!-- Detail page -->
+<script src="/js/lightbox/picturefill.min.js"></script>
+<script src="/js/lightbox/lightgallery-all.min.js"></script>
+<script src="/js/lightbox/jquery.mousewheel.min.js"></script>
+<script src="/js/lightbox/jquery.viewbox.min.js"></script>
+<script src="/js/lightbox/detail-post.js"></script>
+<!-- end Detail Page-->
+
+<!--Video-->
+<script type="text/javascript" src="/jwplayer/7.12.2/jwplayer.js"></script>
+<script type="text/javascript" src="/js/galleries/video.js"></script>
+<!--end video-->
+{#<script src="{{ static_url }}/js/iab.min.js?v={{ media_version }}"></script>#}
+
+{% block javascripts %}
+{% endblock %}
+</body><!--end body-->
+</html>

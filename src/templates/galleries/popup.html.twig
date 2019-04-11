@@ -1,0 +1,30 @@
+{% if list is defined %}
+    <div class="container">
+    <div class="ul-slide">
+        <a rel="nofollow" id="goToPrevSlide" class="slide-pre"><i class="icon-left-open-big"></i></a>
+        <a rel="nofollow" id="goToNextSlide" class="slide-next"><i class="icon-right-open-big"></i></a>
+
+        <div class="big-slide">
+            <div class="clearfix" style="max-width:974px;position: relative;">
+                <ul id="image-gallery" class="gallery list-unstyled cS-hidden">
+                    {% for key, item in list %}
+                        <li data-link="{{ item.link }}" class="item-photo" data-thumb="{{ item.url }}">
+                            <img src="{{ item.url_large }}" alt="{{ item.title }}"/>
+                            {#<img src="/images/slide.png"/>#}
+                        </li>
+                    {% endfor %}
+                </ul>
+                <div class="count-hidden hidden">
+                    <p class="count">
+                        <span id="current">1</span>
+                        का
+                        <span id="total"></span>
+                    </p>
+                </div>
+                <h3 class="h3-slide"><span class="text-post"></span>
+                    <a rel="nofollow" class="view-more-post" href="" title="View More">(और देखो)</a>
+                </h3>
+            </div>
+        </div>
+    </div>
+{% endif %}

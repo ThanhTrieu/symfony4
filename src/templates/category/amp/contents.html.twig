@@ -1,0 +1,23 @@
+{% if news_list is defined %}
+    {% for key, item in news_list %}
+        <li id="item-{{ item.id }}">
+            <a href="{{ item.url }}" class="img-sp" title="{{ item.title }}">
+                <amp-img src="{{ item.avatar? item.avatar:'/images/n2.png' }}" alt="{{ item.title }}" width="464" height="264" layout="responsive"></amp-img>
+            </a>
+            <div class="info-car">
+                <h3>
+                    <a href="{{ item.url }}" class="name-pro" title="{{ item.title }}">{{ item.title }}</a>
+                </h3>
+                <a class="ic-user" href="{{ item.author_url }}" title="{{ item.author_name }}" style="float: left;font-size: 10px">
+                    <i class="icon-user"></i>
+                    {{ item.author_name }}
+                </a>
+
+                <span class="mg-9-10">|</span>
+                <span class="date-creat">
+                    <i class="icon-clock"></i> {{ item.s_publish_time }}
+                </span>
+            </div>
+        </li>
+    {% endfor %}
+{% endif %}

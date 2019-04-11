@@ -1,0 +1,64 @@
+<title>{{ seo.title }}</title>
+
+{% if seo.description is defined %}
+<meta name="description" content="{{ seo.description }}"/>
+{% endif %}
+{% if seo.url is defined %}
+<meta name="original-source" content="{{ seo.url }}" />
+<link rel="canonical" href="{{ seo.url }}" />
+{% endif %}
+{% if seo.mobile_url is defined %}
+    <link rel="alternate" href="{{ seo.mobile_url }}" media="only screen and (max-width: 640px)" />
+    <link rel="alternate" href="{{ seo.mobile_url }}" media="handheld" />
+{% endif %}
+{#{% if seo.prev_url is defined %}
+<link rel="prev" href="{{ seo.prev_url }}" />
+{% endif %}
+{% if seo.next_url is defined %}
+<link rel="next" href="{{ seo.next_url }}" />
+{% endif %}#}
+<meta property="og:type" content="{{ seo.og_type }}" />
+<meta property="og:locale" content="en-IN" />
+<meta property="og:title" content="{{ seo.title }}" />
+{% if seo.description is defined %}
+<meta property="og:description" content="{{ seo.description }}" />
+{% endif %}
+{% if seo.url is defined %}
+<meta property="og:url" content="{{ seo.url }}" />
+{% endif %}
+<meta property="og:site_name" content="{{ site_name }}" />
+{% if seo.og_type == 'article' %}
+<meta property="article:publisher" content="https://www.facebook.com/IndianAutosBlog" />
+{% if seo.article_tag is defined %}
+<meta property="article:tag" content="{{ seo.article_tag }}" />
+{% endif %}
+{% if seo.article_category is defined %}
+<meta property="article:section" content="{{ seo.article_category }}" />
+{% endif %}
+{% if seo.publish_time is defined %}
+<meta property="article:published_time" content="{{ seo.publish_time }}" />
+{% endif %}
+{% if seo.image is defined %}
+<meta property="og:image" content="{{ seo.image }}" />
+<meta property="og:image:secure_url" content="{{ seo.image }}" />
+<meta property="og:image:width" content="620" />
+<meta property="og:image:height" content="324" />
+{% endif %}
+{% endif %}
+<meta name="twitter:card" content="summary_large_image" />
+{% if seo.description is defined %}
+<meta name="twitter:description" content="{{ seo.description }}" />
+{% endif %}
+<meta name="twitter:title" content="{{ seo.title }}" />
+<meta name="twitter:site" content="@indianautos" />
+{% if seo.image is defined %}
+<meta name="twitter:image" content="{{ seo.image }}" />
+{% endif %}
+<meta name="twitter:creator" content="@indianautos" />
+{% if seo.amp is defined %}
+<link rel="amphtml" href="{{ seo.amp }}/amp" />
+{% endif %}
+{% if seo.is_home %}
+<script type='application/ld+json'>{"@context":"https:\/\/schema.org","@type":"WebSite","@id":"#website","url":"https:\/\/indianautosblog.com\/","name":"Indian Autos blog","potentialAction":{"@type":"SearchAction","target":"https:\/\/indianautosblog.com\/?s={search_term_string}","query-input":"required name=search_term_string"}}</script>
+{% endif %}
+<script type='application/ld+json'>{"@context":"https:\/\/schema.org","@type":"Organization","url":"https:\/\/indianautosblog.com\/","sameAs":["https:\/\/www.facebook.com\/IndianAutosBlog","https:\/\/www.instagram.com\/indianautosblog\/","https:\/\/www.youtube.com\/IndianAutosBlog","https:\/\/www.pinterest.com\/IndianAutosBlog\/","https:\/\/twitter.com\/indianautos"],"@id":"https:\/\/indianautosblog.com\/#organization","name":"Indian Autos Blog","logo":"https:\/\/img.indianautosblog.com\/2017\/07\/Logo.png"}</script>

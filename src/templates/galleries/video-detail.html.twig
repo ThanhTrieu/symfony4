@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <section class="list-new2 pd-top-29">
+        <div class="container">
+            <div class="title-menu">
+                <h2 class="title-30-22">वीडियो</h2>
+            </div>
+            {% if info is not null %}
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-8 mg-bottom-10 mg-top-5">
+                        <div id="mainPlayVideo"></div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-4 mt-3">
+                        <h1 style="margin-top: -5px;"><a rel="nofollow" href="javascript:void(0);" class="name-pro" id="firstTitle" style="color: #191919;">{{ info['title'] }}</a></h1>
+                        <div class="short-info" id="firstSapo">{{ info['description'] | raw }}</div>
+                    </div>
+                </div>
+            {% endif %}
+            {#<div class="clear"></div>#}
+            <ul class="mg-top-60 row display-ib videos">
+                <div class="clear"></div>
+                {% if list is not null %}
+                    {% for key, item in list %}
+                        <li id="item-{{ item.video_id }}" class="col-xs-12 col-sm-6 col-md-4">
+                            <a class="img-sp iframetrack" rel="{{ item['url'] }}" title="{{ item['title'] | raw }}">
+                                <img src="{{ item['avatar'] }}" alt="{{ item['title'] | raw }}">
+                                <div class="icon-play"></div>
+                            </a>
+                            <div class="info-car" style="height: 90px;">
+                                <h3 class="list-title"><a href="{{ item['link'] }}" class="name-pro">{{ item['title'] | raw }}</a></h3>
+                                <span class="date-creat"> <i class="icon-clock"></i>{{ item['created_date'] }}</span>
+                                <p style="display: none;" class="sapoVideos">{{ item['description'] | raw }}</p>
+                            </div>
+                        </li>
+                    {% endfor %}
+                {% endif %}
+            </ul>
+        </div>
+        {% if info is not null  %}
+            <input type="hidden" value="{{ info['url'] }}" id="hddUrlVideos"/>
+            <input type="hidden" value="{{ info['avatar'] }}" id="avatarUrlVideos"/>
+        {% endif %}
+    </section>
+{% endblock %}

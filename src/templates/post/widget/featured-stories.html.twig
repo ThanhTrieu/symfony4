@@ -1,0 +1,19 @@
+{% if articleExchange|length > 0  %}
+<section class="list-new2-2" id="featuredlNews">
+    <h2 class="title-30 mg-top-24">Featured Stories </h2>
+    <ul class="list-news2  list-car-col row">
+        {% for key, item in articleExchange %}
+            <li class="col-xs-12 col-sm-6 col-md-4">
+                <a title="{{ item.title }}" href="{{ item.url }}" class="img-sp">
+                    <img src="{{ item.avatar }}" alt="{{ item.title }}">
+                </a>
+                <div class="info-car" style="height: 120px;">
+                    <h3><a href="{{ item.url }}" class="name-pro" title="{{ item.title }}">{{ item.title }}</a></h3>
+                    <span class="date-creat"> <i class="icon-clock"></i> {{ item.s_publish_time }}</span>
+
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</section><!--end -list-new2-2-->
+{% endif %}

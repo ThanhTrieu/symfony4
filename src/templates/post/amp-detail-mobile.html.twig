@@ -1,0 +1,157 @@
+{% extends 'amp.html.twig' %}
+
+{% block content %}
+    <div id="wrapper">
+        <section class="detail-new">
+            <div class="main">
+                <h1 class="title-18-blue">{{ data['title']|raw }}</h1>
+                <div class="date">
+                    <span class="date-creat"> <i class="fa fa-clock-o mg-right-5"></i> {{ data['s_publish_time'] }}</span>
+
+                    <span class="Reviews"><i class="icon-folder-open"></i>  {{ data['tag_cat']|raw }}</span>
+                    <span class="ic-user"><i class="fa fa-user mg-right-5"></i><a href="{{ urlAuthor }}" title="{{ author.displayName|raw }}">{{ author.displayName|raw }}</a></span>
+                </div>
+                <div class="detail-news">
+
+                    <div class="fb-detail">
+                        <amp-social-share type="facebook" width="30" height="22"
+                                          data-param-app_id="1924560867849013"
+                                          data-param-text="{{ data.title }}"
+                                          data-param-href="{{ urlShareLink }}">
+                        </amp-social-share>
+                        <amp-social-share type="twitter" width="30" height="22"
+                                          data-param-text="{{ data.title }}"
+                                          data-param-url="{{ urlShareLink }}">
+                        </amp-social-share>
+                        <amp-social-share type="gplus" width="30" height="22"
+                                          data-param-text="{{ data.title }}"
+                                          data-param-url="{{ urlShareLink }}">
+                        </amp-social-share>
+                        <amp-social-share type="linkedin" width="30" height="22"
+                                          data-param-text="{{ data.title }}"
+                                          data-param-url="{{ urlShareLink }}">
+                        </amp-social-share>
+                        <amp-social-share type="whatsapp" width="30" height="22"
+                                          data-param-text="{{ data.title }}"
+                                          data-param-url="{{ urlShareLink }}">
+                        </amp-social-share>
+                    </div>
+                    <div class="new-detail">
+                        <div class="main-new-content">
+                            {{ data.content | raw }}
+                        </div>
+                        <div class="clear"></div>
+                        {% if listDataPhotos != null %}
+                            <h2 class="f-rb">{{ titleGallery }}</h2>
+                            <amp-carousel
+                                    lightbox
+                                    width="398"
+                                    height="223"
+                                    layout="responsive"
+                                    type="slides"
+                                    autoplay
+                                    delay="2000">
+                                {% for key, item in listDataPhotos %}
+                                    <amp-img src="{{ item.url }}"
+                                             width="398"
+                                             height="223"
+                                             layout="responsive"
+                                             alt="{{ item.title }}">
+                                    </amp-img>
+                                {% endfor %}
+                            </amp-carousel>
+                        {% endif %}
+                        <div class="clear"></div>
+                        <div class="like" style="margin-top: 30px; margin-bottom: 0px;">
+                            <amp-facebook-like width="60" height="20"
+                                               layout="fixed"
+                                               data-layout="button_count"
+                                               data-href="{{ urlShareLink }}">
+                            </amp-facebook-like>
+                            {#<amp-social-share type="gplus" width="30" height="22"#}
+                                              {#data-param-text="{{ data.title }}"#}
+                                              {#data-param-url="{{ urlShareLink }}">#}
+                            {#</amp-social-share>#}
+                        </div>
+                        <div class="clear"></div>
+                        <amp-facebook-comments width=486 height=657
+                                               layout="responsive"
+                                               data-numposts="5"
+                                               data-href="{{ urlShareLink }}">
+                        </amp-facebook-comments>
+                    </div>
+                </div><!--end detail-news-->
+            </div>
+        </section><!--end section populer-->
+
+        {% include 'post/amp/related-in-tag.html.twig' with {'nameTag': nameTag, 'dataRelated': dataRelatedTag} only %}
+        {% include 'post/amp/related-in-cate.html.twig' with {'nameCate': nameCate, 'dataRelated': dataRelatedCate} only %}
+
+        {% if lastestPosts|length > 0  %}
+            <section class="list-new2 pd-top-30">
+                <div class="main">
+                    <h2 class="title-18">Latest</h2>
+                    <ul class="list-news-50 list-news-2 lp14">
+                        {% for key, item in lastestPosts %}
+                            <li>
+                                <h3><a href="{{ item.url }}" class="name-pro" title="{{ item.title }}">{{ item.title }}</a></h3>
+                                <div class="span-date">
+                                    {% if item.author_name != null %}
+                                        <a href="{{ item.author_url }}"><span class="date-creat"> <i class="fa fa-user"></i> {{ item.author_name }}</span></a>
+                                    {% endif %}
+                                    <span class="date-creat mg-left-10"> <i class="fa fa-clock-o"></i> {{ item.s_publish_time }}</span>
+                                </div>
+                                <div class="clear"></div>
+                                <div class="info-featured-sapo">
+                                    <a title="{{ item.title }}" href="{{ item.url }}" class="img-sp">
+                                        <amp-img src="{{ item.avatar }}" alt="{{ item.title }}" width="360" height="201" layout="responsive"></amp-img>
+                                    </a>
+                                </div>
+                                <div class="info-car">
+                                    <p>{{ item.sapo }}</p>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </section>
+        {% endif %}
+        {% if mostViewPosts|length > 0  %}
+            <section class="list-new2 pd-top-30">
+                <div class="main">
+                    <h2 class="title-18">Most Viewed</h2>
+                    <ul class="list-news-50 list-news-2 lp14">
+                        {% for key, item in mostViewPosts %}
+                            <li>
+                                <h3><a href="{{ item.url }}" class="name-pro" title="{{ item.title }}">{{ item.title }}</a></h3>
+                                <div class="span-date">
+                                    {% if item.author_name is not null %}
+                                        <a href="{{ item.author_url }}"><span class="date-creat"> <i class="fa fa-user"></i> {{ item.author_name }}</span></a>
+                                    {% endif %}
+                                    <span class="date-creat  mg-left-10"> <i class="fa fa-clock-o"></i> {{ item.s_publish_time }}</span>
+                                </div>
+                                <div class="clear"></div>
+                                <div class="info-featured-sapo">
+                                    <a title="{{ item.title }}" href="{{ item.url }}" class="img-sp">
+                                        <amp-img src="{{ item.avatar }}" alt="{{ item.title }}" width="360" height="201" layout="responsive"></amp-img>
+                                    </a>
+                                </div>
+                                <div class="info-car">
+                                    <p>{{ item.sapo }}</p>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </section>
+        {% endif %}
+        {% include 'post/amp/featured-stories.html.twig' with {'articleExchange': dataRelatedFeatured} only %}
+        <section>
+            <div class="qc main">
+                <a href="{{ detailUrlContribute }}" title="Submit Spy Shots and Get Bragging Rights">
+                    <amp-img width="398" height="65" layout="responsive" src="/images/qc.png" alt="Submit Spy Shots and Get Bragging Rights"></amp-img>
+                </a>
+            </div>
+        </section>
+    </div>
+{% endblock %}

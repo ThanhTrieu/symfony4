@@ -1,0 +1,180 @@
+.title-home {
+    display: inline-block;
+    margin: 0px;
+}
+/*Facebook comment*/
+.fb-comments,
+.fb-comments span,
+.fb-comments select,
+.fb-comments span iframe[style] {
+    min-width: 100% !important;
+    width: 100% !important;
+    font-size: 14px !important;
+}
+.main-new-content .video-container{
+    margin: 10px 0px !important;
+}
+.main-new-content table{
+    border: 1px solid black !important;
+}
+.main-new-content table tr td{
+    border: 1px solid black !important;
+}
+/* Default CSS Values */
+.main-new-content blockquote {
+    display: block !important;
+    margin-top: 1em !important;
+    margin-bottom: 1em !important;
+    margin-left: 40px !important;
+    margin-right: 40px !important;
+}
+.display-ib.videos .icon-play {
+    margin-left: 0px !important;
+    margin-top: 23px !important;
+}
+.display-ib.videos li .icon-play {
+    top: 20% !important;
+    left: 42% !important;
+}
+.clear{
+    clear: both;
+}
+.cars-review-item {
+    position: relative !important;
+}
+.responsive {
+    width: 100% !important;
+    height: auto;
+}
+/* search */
+.top-search .custom-input{
+    float: right;
+}
+.custom-input i {
+    font-size: 22px;
+    color: #fff;
+    opacity: .45;
+    position: absolute;
+    float: right;
+    right: 0;
+    top: 1px;
+    cursor: pointer;
+}
+#keywordSearch {
+    width: 200px;
+    position: relative;
+    margin-bottom: 10px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    background-color: #322f42;
+    color: #ffffff;
+    border-radius: 5px;
+    height: 40px;
+    line-height: 40px;
+    border: 1px solid #4f4a6c;
+    padding: 0px 20px 0px 9px;
+    font-size: 14px;
+    font-family: 'Poppins Regular';
+}
+/* When the input field gets focus, change its width to 100% */
+#keywordSearch:focus {
+    width: 459px;
+    background-color: #322f42;
+    border: 1px solid #4f4a6c;
+}
+.bt-pointer{
+    cursor: pointer;
+}
+
+/* search mobile */
+.p-search {
+    width: 100%;
+    float: left;
+}
+.p-search .form-control, .p-search {
+    border: 0;
+    background: #eee;
+    height: 40px;
+    line-height: 40px;
+}
+.p-search .form-control {
+    width: 77%;
+    float: left;
+    margin-bottom: 0;
+}
+.search-mobile .custom-input {
+    position: relative;
+    background: #fff;
+}
+.search-mobile .btn-search {
+    background: #eee;
+    color: #222;
+    width: 23%;
+    float: left;
+    border: 0;
+    padding: 0;
+    line-height: 40px;
+    font-size: 12px;
+    font-family: 'Montserrat Medium';
+    text-transform: uppercase;
+}
+/* menu-mobile */
+/* menu mobile */
+.nav-content{
+    float: right;
+}
+@media only screen and (min-width: 992px){
+    .nav li:hover .menu-sub {
+        display: block !important;
+    }
+    .menu-sm:hover .submenu1{
+        display: block;
+    }
+    .menu-sub-mobile{
+        display: none;
+    }
+    .search-mobile{
+        display: none !important;
+    }
+}
+@media only screen and (min-width: 1200px){
+    .top-search .custom-input{
+        position: relative;
+    }
+}
+@media only screen and  (min-width: 992px) and (max-width: 1199px){
+    #keywordSearch:focus {
+        width: 98%;
+        right: 10px;
+        position: absolute;
+        top: 15px;
+    }
+    .top-search .custom-input i {
+        right: 15px;
+        top: 1px;
+    }
+}
+@media only screen and (max-width: 991px){
+    .top-search .custom-input{
+        display: none;
+    }
+    .menu-mobile{
+        overflow: auto;
+        height: 100%;
+    }
+    .nav-content{
+        width: 100%;
+    }
+    #nav-mobile {
+        background: #151320;
+        height: 50px;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 9999;
+        transition: top .3s;
+    }
+    .body-mobile{
+        padding-top: 50px;
+    }
+}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    {% if(data|default) %}
+        {% for item in data['news_list'] %}
+            <sitemap>
+                <loc>{{ data.site_map_domain_local }}{{ item.url }}</loc>
+                <lastmod>{{ item.time }}</lastmod>
+            </sitemap>
+        {% endfor %}
+    {% endif %}
+</sitemapindex>
+{#TrieuNT edited#}

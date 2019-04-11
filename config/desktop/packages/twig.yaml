@@ -1,0 +1,9 @@
+twig:
+    default_path: '%kernel.project_dir%/src/templates'
+    debug: '%kernel.debug%'
+    strict_variables: '%kernel.debug%'
+    globals:
+            site_name: '%site_name%'
+            home_title: '%home_title%'
+            site_desc: '%site_desc%'
+    #exception_controller: App\Controller\DefaultController::showException

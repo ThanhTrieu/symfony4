@@ -1,0 +1,20 @@
+# If use Docker for Windows
+Change /projects/indianautosblog/desktop_v3/ to ./
+
+# If use Docker Toolbox config below
+# Mount driver in Docker Toolbox
+# Step 1
+Add shared folder in Virtual Box, ex: PhpProjects -> D:\PhpProject
+# Step 2: Open Docker Quickstart Terminal
+# Run command
+docker-machine ssh
+# Step 3: Run command
+sudo vi /var/lib/boot2docker/bootlocal.sh
+# Paste content below and save
+sudo mkdir /projects
+sudo mount -t vboxsf PhpProjects /projects
+# Step 4: Quit machine
+exit
+# Step 5: Restart machine with command
+docker-machine restart
+# Finish

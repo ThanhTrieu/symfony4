@@ -1,0 +1,206 @@
+<!-- nav-->
+<div class="nav" id="nav-mobile">
+    <div class="container">
+        <div class="row">
+            <div class="clear" >
+                <a class="menu-ic bt-pointer" id="event-menu">
+                    <i class="icon-menu-1"></i>
+                    <i class="icon-cancel" style="display: none"></i>
+                </a>
+                <!-- END: event-menu -->
+                <div class="bg-logo col-xs-12 col-md-3 col-lg-4">
+                    {% if app.request.get('_route') == 'index' %}
+                        <h1 class="title-home"><a href="{{ path('index') }}" class="logo" title="{{ home_title }}"><img
+                                        src="/images/logo.png" alt="{{ home_title }}"></a></h1>
+                    {% else %}
+                        <a href="{{ path('index') }}" class="logo" title="{{ home_title }}"><img src="/images/logo.png"
+                                                                                                 alt="{{ home_title }}"></a>
+                    {% endif %}
+                </div>
+                <a class="search-ic bt-pointer" id="event-search">
+                    <i class="icon-search"></i>
+                    <i class="icon-cancel" style="display: none;margin-top: 7px;"></i>
+                </a>
+                <!-- END: event-search -->
+            </div>
+            <div class="menu-nav col-xs-12 col-md-9 col-lg-8 overlay menu-mobile">
+                <div class="right-nav">
+                    <div class="for-mb">
+                        <p>Language</p>
+                        <a href="https://indianautosblog.com/"> English</a>
+                        <a href="/">हिंदी</a>
+                    </div>
+                    <span class="index99">EN<i class="icon-down-open-big"></i></span>
+                </div>
+                <nav class="nav-content">
+                    <ul class="left-nav">
+                        {% if parentSlug is defined and parentSlug == 'home' %}
+                            <li class="active"><a href="{{ path('index') }}" title="प्रथम पृष्ठ">प्रथम पृष्ठ</a></li>
+                        {% else %}
+                            <li><a href="{{ path('index') }}" title="प्रथम पृष्ठ">प्रथम पृष्ठ</a></li>
+                        {% endif %}
+                        <li class="menu-full{{ (parentSlug is defined and parentSlug == 'car-news') ? ' active' : '' }}"
+                            rel="menu-car">
+                            <a class="top-menu-item" href="/car-news" title="गाड़ियों की खबरें">गाड़ियों की खबरें</a>
+                            <i class="icon-down-open-big"></i>
+                            <div id="menu-car" class="menu-sub menu-sub-mobile">
+                                <ul class="drop-menuul">
+                                    <li><a href="/car-news/alfa-romeo" title="Alfa Romeo">आल्फा रोमियो</a></li>
+                                    <li><a href="/car-news/dc-design" title="DC Design">डीसी डिज़ाइन</a></li>
+                                    <li><a href="/car-news/kia" title="Kia">किआ</a></li>
+                                    <li><a href="/car-news/mercedes-benz">मर्सेडीज़-बेंज़</a></li>
+                                    <li><a href="/car-news/audi" title="Audi">आउडी</a></li>
+                                    <li><a href="/car-news/bentley" title="Bentley">बेंटले</a></li>
+                                    <li><a href="/car-news/bmw" title="BMW">बीएमडब्ल्यू</a></li>
+                                    <li><a href="/car-news/bugatti" title="Bugatti">बुगाटी</a></li>
+                                    <li><a href="/car-news/general-motors/chevrolet" title="Chevrolet">शेवरले</a>
+                                    </li>
+
+                                    <li><a href="/car-news/citroen" title="Citroen">सिट्रोअेन</a></li>
+                                    <li><a href="/car-news/dacia" title="Dacia">दाचिया</a></li>
+                                    <li><a href="/car-news/daihatsu" title="Daihatsu">दाईहत्सू</a></li>
+                                    <li><a href="/car-news/datsun" title="Datsun">डैटसन</a></li>
+
+                                    <li><a href="/car-news/ferrari" title="Ferrari">फेरारी</a></li>
+                                    <li><a href="/car-news/fiat" title="Fiat">फ़िएट</a></li>
+                                    <li><a href="/car-news/ford" title="Ford">फोर्ड</a></li>
+                                    <li><a href="/car-news/honda" title="Honda">होंडा</a></li>
+                                    <li><a href="/car-news/hyundai" title="Hyundai">ह्युंडई</a></li>
+                                    <li><a href="/car-news/infiniti" title="Infiniti">इनफिनिटी</a></li>
+                                    <li><a href="/car-news/isuzu" title="Isuzu">इसुज़ु</a></li>
+                                    <li><a href="/car-news/jaguar" title="Jaguar">जेग्युआर</a></li>
+                                    <li><a href="/car-news/jeep" title="Jeep">जीप</a></li>
+
+
+                                    <li><a href="/car-news/lada" title="Lada">लाडा</a></li>
+                                    <li><a href="/car-news/lamborghini" title="Lamborghini">लेम्बोर्गिनी</a></li>
+                                    <li><a href="/car-news/land-rover" title="Land Rover">लेंड रोवर</a></li>
+                                    <li><a href="/car-news/lexus" title="Lexus">लेक्सस</a></li>
+                                    <li><a href="/car-news/mahindra" title="Mahindra">महिंद्रा</a></li>
+                                    <li><a href="/car-news/maruti-suzuki" title="Maruti Suzuki">मारुति सुज़ुकी</a></li>
+                                    <li><a href="/car-news/maserati" title="Maserati">मासेराती</a></li>
+                                    <li><a href="/car-news/mazda" title="Mazda">मेज़डा</a></li>
+                                    <li><a href="/car-news/mclaren" title="McLaren">मक्लेरन</a></li>
+
+                                    <li><a href="/car-news/rolls-royce" title="Rolls Royce">रोल्स-रॉयस</a></li>
+                                    <li><a href="/car-news/mini" title="Mini">मिनी</a></li>
+                                    <li><a href="/car-news/mitsubishi" title="Mitsubishi">मित्सुबिशी</a></li>
+                                    <li><a href="/car-news/nissan" title="Nissan">निसान</a></li>
+                                    <li><a href="/car-news/opel" title="Opel">ओपेल</a></li>
+                                    <li><a href="/car-news/perodua" title="Perodua">पेरोडुआ</a></li>
+                                    <li><a href="/car-news/peugeot" title="Peugeot">प्युजो</a></li>
+                                    <li><a href="/car-news/porsche" title="Porsche">पोर्शा</a></li>
+                                    <li><a href="/car-news/proton" title="Proton">प्रोटॉन</a></li>
+                                    <li><a href="/car-news/renault" title="Renault">रेनॉ</a></li>
+
+                                    <li><a href="/car-news/skoda" title="Skoda">श्कोडा</a></li>
+                                    <li><a href="/car-news/ssangyong" title="Ssangyong">सेंगयोंग</a></li>
+                                    <li><a href="/car-news/suzuki" title="Suzuki">सुज़ुकी</a></li>
+                                    <li><a href="/car-news/tata" title="Tata">टाटा</a></li>
+                                    <li><a href="/car-news/tesla" title="Tesla">टेस्ला</a></li>
+                                    <li><a href="/car-news/toyota" title="Toyota">टोयोटा</a></li>
+                                    <li><a href="/car-news/volkswagen" title="Volkswagen">फोक्सवैगन</a></li>
+                                    <li><a href="/car-news/volvo" title="Volvo">वोल्वो</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="menu-full{{ (parentSlug is defined and parentSlug == 'motorcycles') ? ' active' : '' }}"
+                            rel="menu-bike">
+                            <a class="top-menu-item" href="/motorcycles" title="ाइकों की खबरें">ाइकों की खबरें</a>
+                            <i class="icon-down-open-big"></i>
+                            <div id="menu-bike" class="menu-sub menu-sub-mobile">
+                                <ul class="drop-menuul">
+                                    <li><a href="/motorcycles/aprilia" title="Aprilia">अप्रिलिया</a></li>
+                                    <li><a href="/motorcycles/bmw-motorrad" title="BMW">बीएमडब्ल्यू</a></li>
+                                    <li><a href="/motorcycles/bajaj" title="Bajaj">बजाज</a></li>
+                                    <li><a href="/motorcycles/benelli" title="Benelli">बेनेल्ली</a></li>
+                                    <li><a href="/motorcycles/bimota" title="Bimota">बाइमोटा</a></li>
+                                    <li><a href="/motorcycles/dsk-benelli">डीएसके-बेनेल्ली</a></li>
+
+                                    <li><a href="/motorcycles/dsk-hyosung">डीएसके- ह्योसंग</a></li>
+                                    <li><a href="/motorcycles/ducati" title="Ducati">ड्यूकाटी</a></li>
+                                    <li><a href="/motorcycles/ktm/husqvarna" title="Husqvarna">हुस्क्वर्ना</a></li>
+                                    <li><a href="/motorcycles/harley-davidson" title="Harley">हार्ली</a></li>
+                                    <li><a href="/motorcycles/hero-motocorp" title="Hero">हीरो</a></li>
+                                    <li><a href="/motorcycles/honda-motorcycles" title="Honda">होंडा</a></li>
+
+                                    <li><a href="/motorcycles/indian-2" title="Indian">इंडियन</a></li>
+                                    <li><a href="/motorcycles/ktm" title="KTM">केटीएम</a></li>
+                                    <li><a href="/motorcycles/bajaj/kawasaki" title="Kawasaki">कावासाकी</a></li>
+                                    <li><a href="/motorcycles/kymco" title="KYMCO">केवायऐमसीओ</a></li>
+                                    <li><a href="/motorcycles/mahindra-2wheelers" title="Mahindra">महिंद्रा</a></li>
+                                    <li><a href="/motorcycles/moto-guzzi" title="Moto Guzzi">मोटो गुज्जी़</a></li>
+
+                                    <li><a href="/motorcycles/moto-morini" title="Moto Morini">मोटो मोरिनी</a></li>
+                                    <li><a href="/motorcycles/mv-agusta" title="MV Agusta">एमवी अगस्ता</a></li>
+                                    <li><a href="/motorcycles/piaggio" title="Piaggio">पियाज्ज्यो</a></li>
+                                    <li><a href="/motorcycles/royal-enfield" title="Royal Enfield">रॉयल एनफील्ड</a>
+                                    </li>
+                                    <li><a href="/motorcycles/suzuki-motorcycles-2" title="Suzuki">सुज़ुकी</a></li>
+                                    <li><a href="/motorcycles/sym" title="SYM">ऐसवायएम</a></li>
+
+                                    <li><a href="/motorcycles/triumph-2" title="Triumph">ट्राइंफ</a></li>
+                                    <li><a href="/motorcycles/tvs" title="TVS">टीवीएस</a></li>
+                                    <li><a href="/motorcycles/um-global-motorcycles" title="UM Global">यूएम ग्लोबल</a>
+                                    </li>
+                                    <li><a href="/motorcycles/vardenchi" title="Vardenchi">वर्देंचि</a></li>
+                                    <li><a href="/motorcycles/piaggio/vespa" title="Vespa">वेस्पा</a></li>
+                                    <li><a href="/motorcycles/yamaha" title="Yamaha">यामाहा</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="menu-sm{{ (parentSlug is defined and (parentSlug == 'car-reviews' or parentSlug == 'bike-reviews')) ? ' active' : '' }}"
+                            rel="menu-reviews">
+                            <a class="top-menu-item" href="/car-reviews" title="समीक्षण">समीक्षण</a>
+                            <i class="icon-down-open-big"></i>
+                            <ul class="submenu1 menu-sub-mobile">
+                                <li><a href="/car-reviews" title="Car Reviews">कार समीक्षा</a></li>
+                                <li><a href="/bike-reviews" title="Bike Reviews">बाइक समीक्षा</a></li>
+                            </ul>
+                        </li>
+                        <li{{ (parentSlug is defined and parentSlug == 'featured') ? ' class="active"' : '' }}>
+                            <a class="top-menu-item" href="/featured" title="पपप्रस्तुतित">पप्रस्तुतित</a>
+                        </li>
+                        <li class="menu-sm last{{ (parentSlug is defined and parentSlug == 'galleries') ? ' active' : '' }}"
+                            rel="menu-galleries">
+                            <a class="top-menu-item" href="/photo" title="GALLERIES">गैलरी</a>
+                            <i class="icon-down-open-big"></i>
+                            <ul class="submenu1 menu-sub-mobile">
+                                <li><a href="/photo" title="Photos">तस्वीरें</a></li>
+                                <li><a href="/video" title="Videos">वीडियो</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+                <!--end nav-->
+            </div>
+        </div>
+    </div>
+    <!--end container-->
+</div>
+<!--end nav-->
+<div class="p-search search-mobile" style="display: none">
+    <div class="custom-input">
+        <input class="form-control" placeholder="यहा लिखो" id="keywordSearchMobile">
+    </div>
+    <button class="btn-search" id="btnSearchMobile">खोज &gt;</button>
+</div>
+<div class="top-search">
+    <div class="container">
+        {{ render_esi(controller('App\\Controller\\Post\\WidgetController::trending')) }}
+        {#<ul class="menu-search">#}
+        {#<li><div class="f-rb white-clr">TRENDING:</div><i class="icon-flash"></i></li>#}
+        {#<li><a href="">मारुती सुजुकी स्पोर्ट</a></li>#}
+        {#<li><a href="">टाटा हैर्रियर</a></li>#}
+        {#<li><a href="">महिंद्रा म</a></li>#}
+        {#<li><a href="">Hyundai Santro</a></li>#}
+        {#<li class="last"><a href="">Honda City 2018 Indian</a></li>#}
+        {#</ul>#}
+        <div class="custom-input">
+            <input id="keywordSearch" value="" placeholder="">
+            <i class="icon-search" id="btnSearch"></i>
+        </div>
+    </div>
+    <!--end container-->
+</div>
+<!--end top-search-->

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+    {% if(data|default) %}
+        {% for item in data['news_list'] %}
+            <url>
+                <loc>{{ data.site_map_domain_local }}{{ item.url }}</loc>
+                <lastmod>{{ item.s_modified_date }}</lastmod>
+                <changefreq>daily</changefreq>
+                <priority>0.4</priority>
+            </url>
+        {% endfor %}
+    {% endif %}
+</urlset>
+{#TrieuNT edited#}

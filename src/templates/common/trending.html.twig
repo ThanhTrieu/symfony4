@@ -1,0 +1,13 @@
+{% if( optionData is not null ) %}
+    <ul class="menu-search">
+        <li><div class="f-rb white-clr">{{ optionData.title }}:</div><i class="icon-flash"></i></li>
+        {% for key, item in optionData.items %}
+            <li{% if loop.index == loop.length-1 %} class="last"{% endif %}><a href="{{ item.link_url }}" title="{{ item.title }}">{{ item.title }}</a></li>
+        {% endfor %}
+        {#<li><a href="">Suzuki Swift Sport</a></li>
+        <li><a href="">Tata Harrier</a></li>
+        <li><a href="">Mahindra Marazzo 2018</a></li>
+        <li><a href="">Hyundai Santro</a></li>
+        <li class="last"><a href="">Honda City 2018 Indian</a></li>#}
+    </ul>
+{% endif %}

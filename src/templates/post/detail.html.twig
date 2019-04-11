@@ -1,0 +1,140 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <style type="text/css">
+        div.lg-sub-html a { color: whitesmoke;}
+    </style>
+{% endblock %}
+
+{% block content %}
+    <section class="list-new1 p-detail">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <section class="list-car-left">
+                        <h1 class="title-30">{{ data['title'] }}</h1>
+                        <span class="date-creat gray-clr">
+                            <i class="icon-clock"></i>{{ data['s_publish_time'] }}
+                        </span>
+                        <span class="mg-9-10 gray-clr">|</span>
+                        <span class="Reviews"> <i class="icon-folder-open"></i> {{ data['tag_cat']|raw }}</span>
+                        {% if author %}
+                        <span class="mg-9-10 gray-clr">|</span>
+                        <a href="{{ urlAuthor }}" title="{{ author.displayName|raw }}" class="ic-user"><i class="icon-user"></i>{{ author.displayName|raw }}</a>
+                        {% endif %}
+                        <div class="detail-news">
+                            <div class="fb-detail">
+                                <ul class="menu-fb">
+                                    <li><a id="btn-share" data-link="https://www.facebook.com/sharer/sharer.php?u={{ urlShareLink }}" data-href="{{ urlShareLink }}" data-no-popup="true"><img src="/images/1.png" alt="https://www.facebook.com"></a></li>
+
+                                    <li><a data-link="https://twitter.com/intent/tweet?url={{ urlShareLink }}" target="popupwindow" onclick="window.open('https://twitter.com/intent/tweet?text={{ urlShareLink }}', 'popupwindow', 'scrollbars=yes,width=600,height=580');return true"><img src="/images/2.png" alt=""></a></li>
+
+                                    <li><a data-link="https://www.linkedin.com/cws/share?url={{ urlShareLink }}" target="popupwindow" onclick="window.open('https://www.linkedin.com/cws/share?url={{ urlShareLink }}', 'popupwindow', 'scrollbars=yes,width=600,height=580');return true"><img src="/images/4.png" alt=""></a></li>
+
+                                    <li><a data-link="https://plus.google.com/share?url={{ urlShareLink }}" target="popupwindow" onclick="window.open('https://plus.google.com/share?url={{ urlShareLink }}', 'popupwindow', 'scrollbars=yes,width=600,height=580');return true"><img src="/images/3.png" alt=""></a></li>
+
+                                    <li><a data-link="https://api.whatsapp.com/send?text={{ urlShareLink }}" target="popupwindow" onclick="window.open('https://api.whatsapp.com/send?text={{ urlShareLink }}', 'popupwindow', 'scrollbars=yes,width=600,height=580');return true"><img src="/images/5.png" alt=""></a></li>
+                                    {#<li><a data-link="https://pinterest.com/pin/create/button/?url={{ urlShareLink }}" target="popupwindow" onclick="window.open('https://pinterest.com/pin/create/button/?url={{ urlShareLink }}', 'popupwindow', 'scrollbars=yes,width=600,height=580');return true"><img src="/images/6.png" alt=""></a></li>#}
+                                </ul>
+                            </div>
+                            <div class="new-detail">
+                                <div class="main-new-content">
+                                    {{ data.content|raw }}
+                                </div>
+                                {% if listDataPhotos != null  %}
+                                <div class="gallery">
+                                    <h2 class="f-rb fsize-17">{{ titleGallery }}</h2>
+                                    <ul class="list-gallery" id="lightgallery">
+                                        {% for imgs in listDataPhotos %}
+                                            <li data-sub-html="{{ imgs.title }}" data-src="{{ imgs.url_large }}">
+                                                <a href="{{ imgs.url_large }}" class="thumbnail image-link" title="{{ imgs.title | raw }}">
+                                                    <img src="{{ imgs.url }}" class="imgGallery" alt="{{ imgs.title | raw }}">
+                                                </a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                {% endif %}
+                                <div class="like">
+                                    <div style="margin: 14px 0px 18px">
+                                        <ul>
+                                            <li>
+                                                <div class="fb-like" data-href="{{ urlShareLink }}" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="fb-comments" data-href="{{ urlShareLink }}" data-numposts="5" data-width="100%"></div>
+                                </div>
+                            </div>
+                        </div><!--end detail-news-->
+                    </section><!--end section populer-->
+                    {% include 'post/widget/related-in-tag.html.twig' with {'nameTag': nameTag, 'dataRelated': dataRelatedTag} only %}
+                    {% include 'post/widget/related-in-cate.html.twig' with {'nameCate': nameCate, 'dataRelated': dataRelatedCate} only %}
+                    {% if(parentSlug != 'featured') %}
+                        {% include 'post/widget/featured-stories.html.twig' with {'articleExchange': dataRelatedFeatured} only %}
+                    {% endif %}
+                    <div class="qc">
+                        <a href="{{ detailUrlContribute }}" title="Submit Spy Shots and Get Bragging Rights">
+                            <img src="/images/qc.png" alt="Submit Spy Shots and Get Bragging Rights" />
+                        </a>
+                    </div>
+                </div><!--end left-->
+                <div class="col-md-3">
+                    <h2 class="title-24">Most Viewed</h2>
+                    <section class="list-car-right mg-bottom-50">
+                        <ul class="list-new-right list-car-home">
+                            {% for post in mostViewPosts %}
+                                <li>
+                                    <a href="{{ post.url }}" class="img-sp" title="{{ post.title }}">
+                                        <img class="img-responsive"  src="{{ post.avatar }}" alt="{{ post.title }}">
+                                    </a>
+                                    <div class="info-car">
+                                        <h3 class="list-title"><a href="{{ post.url }}" class="name-pro" title="{{ post.title }}">{{ post.title }}</a></h3>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </section>
+                    <!--end section populer-->
+
+                    <h2 class="title-24">Latest</h2>
+                    <section class="list-car-right" style="margin-bottom: 20px;">
+                        <ul class="list-new-right list-car-home">
+                            {% for latest in lastestPosts %}
+                            <li>
+                                <a href="{{ latest.url }}" class="img-sp" title="{{ latest.title }}">
+                                    <img src="{{ latest.avatar }}" alt="{{ latest.title }}">
+                                </a>
+                                <div class="info-car">
+                                    <h3 class="list-title"><a href="{{ latest.url }}" class="name-pro">{{ latest.title }}</a></h3>
+                                </div>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </section>
+                </div><!---end right-->
+            </div>
+        </div><!--end container-->
+        <input type="hidden" name="postId" value="{{ postId }}" id="dataPostId">
+        <input type="hidden" name="urlShareLink" value="{{ urlShareLink }}" id="dataUrlShareLink">
+    </section>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId={{ facebook_app_id }}";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <script >
+        window.___gcfg = {
+            lang: 'en-US',
+            parsetags: 'onload'
+        };
+    </script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+{% endblock %}

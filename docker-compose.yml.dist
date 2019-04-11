@@ -1,0 +1,45 @@
+version: '3'
+#networks:
+#  dev_network:
+#    external:
+#      name: entertainment_dev_network
+networks:
+  dev_network:
+    driver: bridge
+services:
+### Nginx proxy
+    nginx-proxy:
+        image: jwilder/nginx-proxy
+        ports:
+          - "8099:80"
+        volumes:
+          - /var/run/docker.sock:/tmp/docker.sock:ro
+        networks:
+          - dev_network
+### CMS web deployment
+    all_php:
+        build: ./docker/php
+        volumes:
+          #- ./docker/php/conf:/usr/local/etc/php-fpm.d
+          - ./:/opt/www/
+        expose:
+          - 9000-9002
+        networks:
+          - dev_network
+        #command: ["chown", "www-data:www-data", "/sock"]
+    all_nginx:
+        build: ./docker/nginx
+        volumes:
+          - ./docker/nginx/conf:/etc/nginx/conf.d
+          - ./:/opt/www/
+#        volumes_from:
+#          - cms_php
+        environment:
+          - VIRTUAL_HOST=hindi.indianautosblog.local
+        expose:
+          - 80
+        links:
+          - all_php
+        networks:
+          - dev_network
+### CMS web deployment

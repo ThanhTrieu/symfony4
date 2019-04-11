@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    {% if(data|default) %}
+        <url>
+            <loc>{{ data.site_map_domain_local }}</loc>
+            <lastmod>{{ data.site_map_pubDate }}</lastmod>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+        </url>
+        {% for item in data['news_list'] %}
+            <url>
+                <loc>{{ data.site_map_domain_local }}{{ item.url }}</loc>
+                <lastmod>{{ item.datePublished }}</lastmod>
+                <changefreq>daily</changefreq>
+                <priority>1</priority>
+            </url>
+        {% endfor %}
+    {% endif %}
+</urlset>
+{#TrieuNT edited#}

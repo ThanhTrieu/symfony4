@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <sitemap>
+        <loc>{{ data.site_map_domain_local }}/sitemaps/category.xml</loc>
+        <loc>{{ data.site_map_domain_local }}/news-sitemap.xml</loc>
+        <loc>{{ data.site_map_domain_local }}/tags-sitemap.xml</loc>
+        <loc>{{ data.site_map_domain_local }}/author-sitemap.xml</loc>
+        <lastmod>{{ data.site_map_pubDate }}</lastmod>
+    </sitemap>
+    {% if(data|default) %}
+        {% for item in data['news_list'] %}
+            <sitemap>
+                <loc>{{ data.site_map_domain_local }}{{ item.url }}</loc>
+                <lastmod>{{ item.time }}</lastmod>
+            </sitemap>
+        {% endfor %}
+    {% endif %}
+</sitemapindex>
+{#TrieuNT edited#}

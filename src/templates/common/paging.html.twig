@@ -1,0 +1,49 @@
+{% if pagination is defined and pagination.pages_count > 1 %}
+    {% set half_page_count = 4 %}
+    {% if pagination.url == '/' %}
+        {% set page_url = '' %}
+    {% else %}
+        {% set page_url = pagination.url %}
+    {% endif %}
+    <ul class="paging paging-center">
+        {% if pagination.current_page>1 %}
+            {% if pagination.current_page > half_page_count + 1 %}
+                <li class="first"><a href="{{ pagination.url }}">&lsaquo;&lsaquo;</a></li>
+            {% endif %}
+            {% if pagination.current_page == 2 %}
+                {#<a href='{{ pagination.url }}'>&lsaquo; Previous</a>#}
+                <li><a href="{{ pagination.url }}"> &lsaquo; </a></li>
+            {% else %}
+                <li class=""><a href='{{ page_url }}/page/{{ pagination.current_page-1 }}'> &lsaquo; </a></li>
+            {% endif %}
+        {% endif %}
+        {% for p in range(max(pagination.current_page-half_page_count, 1), min(pagination.current_page+half_page_count, pagination.pages_count)) %}
+            {% if p == pagination.current_page %}
+                <li class="active"><a>{{ p }}</a></li>
+            {% else %}
+                {% if p == 1 %}
+                    <li class=""><a href='{{ pagination.url }}' class="inactive">{{ p }}</a></li>
+                {% else %}
+                    <li class=""><a href='{{ page_url }}/page/{{ p }}' class="inactive">{{ p }}</a></li>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+        {% if pagination.current_page<pagination.pages_count %}
+            {#<a href="{{ page_url }}/page/{{ pagination.current_page+1 }}">Next &rsaquo;</a>#}
+            <li><a href="{{ page_url }}/page/{{ pagination.current_page+1 }}"> &rsaquo; </a></li>
+            {% if pagination.current_page + half_page_count < pagination.pages_count %}
+                {#<a href='{{ page_url }}/page/{{ pagination.pages_count }}'>Last &raquo;</a>#}
+                <li class="last"><a href="{{ page_url }}/page/{{ pagination.pages_count }}">&rsaquo;&rsaquo;</a></li>
+            {% endif %}
+        {% endif %}
+    </ul>
+{% endif %}
+{#<ul class="paging paging-center">#}
+    {#<li class="first"><a href=""><i class="icon-angle-double-left"></i></a></li>#}
+    {#<li class="active"><a href="">1</a></li>#}
+    {#<li><a href="">2</a></li>#}
+    {#<li><a href="">3</a></li>#}
+    {#<li class=""><a href="">4</a></li>#}
+    {#<li class=""><a href="">5</a></li>#}
+    {#<li class="last"><a href=""><i class="icon-angle-double-right"></i></a></li>#}
+{#</ul>#}

@@ -1,0 +1,36 @@
+{% extends 'amp.html.twig' %}
+
+{% block content %}
+    <div class="search menu-search2">
+        <div class="main">
+            <h1 class="title-18 full-width">{{ cate_name }}</h1>
+            {#{% if type == 0 %}
+                <ul class="menu-search">
+                    {% if array_child is defined %}
+                        {% for key, item in array_child %}
+                            <li><a href="{{ item.url }}">{{ item.name }}</a></li>
+                        {% endfor %}
+                    {% endif %}
+                </ul>
+            {% endif %}#}
+        </div>
+    </div>
+    <div id="wrapper">
+        <section class="list-new2">
+            <div class="main">
+                <ul class="list-news-2" id="pnlPostList">
+                    {% include 'category/amp/contents.html.twig' with {'news_list': news_list} only %}
+                </ul>
+                <hr>
+                <div class="amp-paging text-center">
+                    {% if flagCheckPreviewPage %}
+                        <a href="{{ linkPrevPage }}" class="amp-viewProfileButton btn btn-all"> previous page</a>
+                    {% endif %}
+                    {% if flagCheckNextPage %}
+                        <a href="{{ linkNextPage }}" class="amp-viewProfileButton btn btn-all"> Next page</a>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}

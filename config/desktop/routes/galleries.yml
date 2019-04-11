@@ -1,0 +1,38 @@
+galleries_photos_page:
+    path:     /photo/page/{page}
+    defaults: {_controller: App\Controller\Galleries\PhotosController::list}
+    requirements:
+            page: "\\d+"
+galleries_photos:
+    path:     /photo
+    defaults: {_controller: App\Controller\Galleries\PhotosController::list}
+galleries_ajax_photos:
+    path:     /ajax/photos
+    defaults: {_controller: App\Controller\Galleries\AjaxController::ajax}
+galleries_ajax_photos_list:
+    path:     /ajax/photos-list
+    defaults: {_controller: App\Controller\Galleries\AjaxController::list}
+galleries_detail_photos:
+    path:     /photo/{slug}-{galleryId}
+    defaults: {_controller: App\Controller\Galleries\PhotosController::list}
+    requirements:
+        slug: "[a-z0-9\\-_‘’%]+"
+        galleryId: "\\d+"
+    options:
+        utf8: true
+galleries_videos_page:
+    path:     /video/page/{page}
+    defaults: {_controller: App\Controller\Galleries\VideosController::list}
+    requirements:
+        page: "\\d+"
+galleries_videos:
+    path:     /video
+    defaults: {_controller: App\Controller\Galleries\VideosController::list}
+galleries_detail_videos:
+    path:     /video/{slug}-{galleryId}
+    defaults: {_controller: App\Controller\Galleries\VideosController::detail}
+    requirements:
+        slug: "[a-z0-9\\-_‘’%]+"
+        galleryId: "\\d+"
+    options:
+        utf8: true

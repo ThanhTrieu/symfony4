@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block javascripts %}
+    <script src="/js/category/load_more.js"></script>
+{% endblock %}
+
+{% block content %}
+    <section class="list-new2 pd-top-29">
+        <div class="container">
+            <div class="title-menu">
+                <h1 class="title-30-22">{{ cate_name }}</h1>
+                <ul class="menu-search2">
+                    <li class="active"><a href="">Maruti Suzuki</a></li>
+                    <li class="light-clr">|</li>
+                    <li><a href="">Hyundai</a></li>
+                    <li class="light-clr">|</li>
+                    <li><a href="">Mahindra</a></li>
+                    <li class="light-clr">|</li>
+                    <li><a href="">Tata</a></li>
+                    <li class="light-clr">|</li>
+                    <li><a href="">Honda</a></li>
+                    <li class="light-clr">|</li>
+                    <li><a href="">Toyota</a></li>
+                    <li class="light-clr">|</li>
+                    <li class="last"><a href="">Renault</a></li>
+                </ul>
+            </div>
+            <ul class="list-news-2 display-ib" data-id="{{ cate_id }}">
+                {% include '/category/contents.html.twig' with {'news_list': news_list} only %}
+            </ul>
+            <div class="text-center mg-bottom-98">
+                <button class="btn btn-all">Load more</button>
+            </div>
+        </div>
+    </section>
+{% endblock %}

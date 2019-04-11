@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+        xmlns:content="http://purl.org/rss/1.0/modules/content/"
+        xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+        xmlns:dc="http://purl.org/dc/elements/1.1/"
+        xmlns:atom="http://www.w3.org/2005/Atom"
+        xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+        xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+>
+    <channel>
+        <title>{{ data.title }}</title>
+        <atom:link href="{{ data.atomLink }}" rel="self" type="application/rss+xml" />
+        <link>{{ data.link }}</link>
+        <description>{{ data.desc }}</description>
+        <lastBuildDate>{{ data.BuildDate }}</lastBuildDate>
+        <language>en-US</language>
+        <sy:updatePeriod>hourly</sy:updatePeriod>
+        <sy:updateFrequency>1</sy:updateFrequency>
+        {% if data.image is defined %}
+        <image>
+            <url>{{ data.image }}</url>
+            <title>{{ data.title }}</title>
+            <link>{{ data.link }}</link>
+            <width>32</width>
+            <height>32</height>
+        </image>
+        {% endif %}
+        {% if data.items is defined %}
+        {% for item in data.items %}
+        <item>
+            <title>{{ item.title|trim }}</title>
+            <link>{{ data.link }}{{ item.url }}</link>
+            <pubDate>{{ item.s_publish_time }}</pubDate>
+            {% if item.displayName is defined %}
+            <dc:creator><![CDATA[{{item.displayName}}]]></dc:creator>
+            {% endif %}
+            {% if item.category|default %}
+                {% for cate in item.category %}
+                <category><![CDATA[{{cate|trim}}]]></category>
+                {% endfor %}
+            {% endif %}
+            {% if item.guid is defined %}
+            <guid isPermaLink="false">{{ item.guid }}</guid>
+            {% endif %}
+            {% if item.sapo is defined %}
+            <description>
+                <![CDATA[{{ item.sapo|trim }}]]>
+            </description>
+            {% endif %}
+            <content:encoded>
+                <![CDATA[{{ item.content|raw }}]]>
+            </content:encoded>
+        </item>
+        {% endfor %}
+        {% endif %}
+    </channel>
+</rss>
+{#TrieuNT edited#}

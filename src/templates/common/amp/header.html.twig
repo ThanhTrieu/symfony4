@@ -1,0 +1,83 @@
+<div id="header">
+    <div class="contents-header">
+        <a class="head-menu bt-pointer" id="event-menu" on="tap:menu-sidebar.open">
+            <i class="fa fa-align-justify"></i>
+        </a>
+        {#<a class="head-search bt-pointer" id="event-search" on="tap:search-sidebar.open">#}
+            {#<i class="fa fa-search"></i>#}
+        {#</a>#}
+
+        <div class="head-logo">
+            {% if app.request.get('_route') == 'index' %}
+                <h1>
+                    <a href="{{ path('index') }}" title="{{ home_title }}">
+                        <amp-img src="/images/logo.png" alt="{{ home_title }}" layout="fixed" width="188" height="20"></amp-img>
+                    </a>
+                </h1>
+            {% else %}
+                <a href="{{ path('index') }}" title="{{ home_title }}">
+                    <amp-img src="/images/logo.png" alt="{{ home_title }}" layout="fixed" width="188" height="20"></amp-img>
+                </a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+<amp-sidebar id="menu-sidebar"
+             layout="nodisplay"
+             side="left"
+             style="width: 300px;">
+    <div class="overlay menu-mobile">
+        <a class="head-menu bt-pointer" on="tap:menu-sidebar.close">
+            <i class="fa fa-remove" style="margin-left: 0px;"></i>
+        </a>
+        <div class="head-logo" style="padding: 5px 50px;">
+            <a href="{{ path('index') }}" title="{{ home_title }}">
+                <amp-img src="/images/logo.png" alt="{{ home_title }}" layout="responsive" width="194" height="20"></amp-img>
+            </a>
+        </div>
+        <div class="menu">
+            <ul class="main-menu mg-bottom-0">
+                {% if parentSlug is defined and parentSlug == 'home' %}
+                    <li class="active"><a class="top-menu-item" href="{{ path('index') }}" title="Home">Home</a></li>
+                {% else %}
+                    <li><a href="{{ path('index') }}" title="Home">Home</a></li>
+                {% endif %}
+                <li class="{{ parentSlug is defined and parentSlug == 'car-news' ? 'active' : '' }}"><a
+                            href="/car-news">Car news</a></li>
+                <li class="{{ parentSlug is defined and parentSlug == 'motorcycles' ? 'active' : '' }}"><a
+                            href="/motorcycles">Bike news</a></li>
+                <li class="{{ parentSlug is defined and parentSlug == 'car-reviews'  ? 'active' : '' }}"><a
+                            href="/car-reviews">Car reviews</a></li>
+                <li class="{{ parentSlug is defined and parentSlug == 'bike-reviews' ? 'active' : '' }}"><a
+                            href="/bike-reviews">Bike reviews</a></li>
+                <li class="{{ parentSlug is defined and parentSlug == 'featured' ? 'active' : '' }}"><a
+                            href="/featured">Featured</a></li>
+                <li class="last {{ parentSlug is defined and parentSlug == 'galleries' ? 'active' : '' }}"><a
+                            href="/photo">Galleries</a></li>
+                <ul class="drop-menu-main">
+                    <li><a href="/photo">Images</a></li>
+                    <li><a href="/video">Videos </a></li>
+                </ul>
+            </ul>
+        </div>
+    </div>
+</amp-sidebar>
+<amp-sidebar id="search-sidebar"
+             layout="nodisplay"
+             side="right"
+             style="width: 300px;background-color: #151320;">
+    <a class="head-menu bt-pointer" on="tap:search-sidebar.close">
+        <i class="fa fa-remove" style="margin-left: 0px;"></i>
+    </a>
+    <div class="head-logo" style="padding: 5px 50px;">
+        <a href="{{ path('index') }}" title="{{ home_title }}">
+            <amp-img src="/images/logo.png" alt="{{ home_title }}" layout="responsive" width="194" height="20"></amp-img>
+        </a>
+    </div>
+    {#<div class="p-search search-mobile">#}
+        {#<div class="control custom-input">#}
+            {#<input class="form-control" placeholder="Type here" id="keywordSearch">#}
+        {#</div>#}
+        {#<button class="btn-search" id="btnSearch">Search &gt;</button>#}
+    {#</div>#}
+</amp-sidebar>

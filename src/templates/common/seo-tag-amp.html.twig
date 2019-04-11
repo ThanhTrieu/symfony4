@@ -1,0 +1,47 @@
+<meta name="twitter:card" content="summary" />
+{% if seo.description is defined %}
+<meta name="twitter:description" content="{{ seo.description }}" />
+{% endif %}
+{% if seo.title is defined %}
+<meta name="twitter:title" content="{{ seo.title }}" />
+{% endif %}
+<meta name="twitter:site" content="@indianautos" />
+{% if seo.image_amp is defined %}
+    <meta name="twitter:image" content="{{ seo.image_amp }}" />
+{% endif %}
+<meta name="twitter:creator" content="@indianautos" />
+<meta property="og:locale" content="en_IN" />
+<meta property="og:type" content="article" />
+{% if seo.title is defined %}
+<meta property="og:title" content="{{ seo.title }}" />
+{% endif %}
+{% if seo.description is defined %}
+<meta property="og:description" content="{{ seo.description }}" />
+{% endif %}
+{% if seo.url is defined %}
+<meta property="og:url" content="{{ seo.url }}" />
+{% endif %}
+<meta property="og:site_name" content="Indian Autos blog" />
+<meta property="article:publisher" content="https://www.facebook.com/IndianAutosBlog" />
+{% if seo.article_tag is defined %}
+    <meta property="article:tag" content="{{ seo.article_tag }}" />
+{% endif %}
+{% if seo.article_category is defined %}
+    <meta property="article:section" content="{{ seo.article_category }}" />
+{% endif %}
+
+{% if seo.publish_time is defined %}
+    <meta property="article:published_time" content="{{ seo.publish_time }}" />
+{% endif %}
+
+{% if seo.image_amp is defined %}
+    <meta property="og:image" content="{{ seo.image_amp }}" />
+    <meta property="og:image:secure_url" content="{{ seo.image_amp }}" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="675" />
+{% endif %}
+<link rel="canonical" href="{{ seo.url }}" />
+
+{% if ampDetail is defined  %}
+<script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"Article","mainEntityOfPage":"{{ seo.url | replace({'/': '\\/'}) }}","publisher":{"@type":"Organization","name":"Indian Autos Blog","logo":{"@type":"ImageObject","url":"https:\/\/indianautosblog.com\/images\/logo-amp.png","height":60,"width":370}},"headline":"{{ seo.title }}","datePublished":"{{ seo.publish_time }}","dateModified":"{{ seo.publish_time }}","author":{"@type":"Person","name":"{{ seo.author }}"},"image":{"@type":"ImageObject","url":"{{ seo.image_amp | replace({'/': '\\/'}) }}","width":1200,"height":675 },"description":"{{ seo.description }}"}</script>
+{% endif %}

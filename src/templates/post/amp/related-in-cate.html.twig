@@ -1,0 +1,21 @@
+{% if dataRelated|length > 0 %}
+    <section class="list-new2 news2 pd-top-30" id="latestDetailPost-News">
+        <div class="main">
+            <h2 class="title-18 full-width" style="width: 100%;">More from {{ nameCate }}</h2>
+            <ul class="list-news-2">
+                {% for key, item in dataRelated %}
+                    <li>
+                        <a title="{{ item.title }}" href="{{ item.url }}" class="img-sp">
+                            <amp-img src="{{ item.avatar }}" alt="{{ item.title }}" width="192" height="108" layout="responsive"></amp-img>
+                        </a>
+                        <div class="info-car">
+                            <h3 class="text-title-cates"><a href="{{ item.url }}" class="name-pro" title="{{ item.title }}">{{ item.title }}</a></h3>
+                            <span class="date-creat"> <i class="fa fa-clock-o"></i> {{ item.s_publish_time }}</span>
+
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+{% endif %}

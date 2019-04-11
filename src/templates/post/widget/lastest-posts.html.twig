@@ -1,0 +1,23 @@
+{% for item in lastestPosts %}
+    <li>
+        <div class="row">
+            <div class="col-md-4 col-sm-5 col-xs-12">
+                <a href="{{ item.url }}" class="img-sp" title="{{ item.title }}">
+                    <img src="{{ item.avatar }}" alt="{{ item.title }}" />
+                </a>
+            </div>
+            <div class="info-car col-md-8 col-sm-7 col-xs-12">
+                <h3>
+                    <a href="{{ item.url }}" class="name-pro" title="{{ item.title }}">
+                        {{ item.title|raw }}
+                    </a>
+                </h3>
+                <span class="ic-user"><i class="icon-user"></i> Bruce Nguyen</span><span class="mg-9-10">|</span
+                ><span class="date-creat"> <i class="icon-clock"></i>  {{ item.s_publish_time }} </span>
+                <div class="short-info">
+                    {{ item.sapo}}
+                </div>
+            </div>
+        </div>
+    </li>
+{% endfor %}

@@ -1,0 +1,212 @@
+{% extends 'amp.html.twig' %}
+
+{% block content %}
+    <div class="search">
+        {{ render_esi(controller('App\\Controller\\Post\\WidgetController::trending')) }}
+    </div><!-- END: .search -->
+
+    <div class="banner">
+        {% if focusPosts is defined %}
+            <amp-carousel width="480"
+                          height="360"
+                          layout="responsive"
+                          type="slides"
+                          autoplay
+                          delay="5000">
+                {% for key, item in focusPosts %}
+                    <div class="slide">
+                        <a href="{{ item.url }}" title="{{ item.title }}" class="news-item">
+                            <amp-img src="{{ item.avatar }}"
+                                     width="480"
+                                     height="360"
+                                     layout="fill"
+                                     lightbox
+                                     alt="{{ item.title }}"></amp-img>
+                            <h3 class="amp-title-banner">
+                                {{ item.title }}
+                            </h3>
+                            <div class="amp-time-banner"><i class="fa fa-clock-o"></i> {{ item.s_publish_time }}</div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </amp-carousel>
+        {% endif %}
+    </div><!-- END: banner slide -->
+
+    <div id="wrapper">
+        <section class="list-new2 pd-top-25 pd-bottom-28">
+            <div class="main">
+                <h2 class="title-18">Latest News</h2>
+                <ul class="list-news-2" id="pnlPostList">
+                    {% for item in lastestPosts %}
+                        <li>
+                            <a href="{{ item.url }}" class="img-sp">
+                                <amp-img lightbox src="{{ item.avatar }}" alt="{{ item.title }}" width="464" height="260" layout="responsive"></amp-img>
+                            </a>
+                            <div class="info-car">
+                                <h3><a href="{{ item.url }}" class="name-pro" title="{{ item.title }}">{{ item.title }}</a></h3>
+                                <p class="info-user-time">
+                                    <a href="{{ item.author_url }}" class="ic-user"><i class="fa fa-user"></i> {{ item.author_name }}</a>
+                                    <span class="mg-9-10">|</span><span class="date-creat"> <i class="fa fa-clock-o"></i> {{ item.s_publish_time }}</span>
+                                </p>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <div class="clear"></div>
+                <div class="text-center">
+                    {% if checkPrevPage %}
+                        <a href="{{ urlPrevPage }}" class="amp-btn-page" title="Prev page"> Previous page</a>
+                    {% endif %}
+
+                    {% if checkNextPage %}
+                        <a href="{{ urlNextPage }}" class="amp-btn-page" title="Next page"> Next page</a>
+                    {% endif %}
+                </div>
+            </div>
+        </section><!-- END: Latest News -->
+        {% if featuredStoriesCate is defined %}
+            <section class="list-new2 pd-top-25 pd-bottom-28">
+                <div class="main">
+                    <h2 class="title-18">Featured Stories</h2>
+                    <div class="view-all">
+                        <a href="{{ featuredStoriesCate.url }}">
+                            View All
+                            <i class="icon-right-open-big"></i>
+                        </a>
+                    </div>
+                    <div class="clear"></div>
+                    {% if featuredStoriesPosts is not null %}
+                        <ul class="list-news-50 list-news-2">
+                            {% for post in featuredStoriesPosts %}
+                                <li>
+                                    <h3><a href="{{ post.url }}" class="name-pro">{{ post.title }}</a></h3>
+                                    <div class="span-date">
+                                        <a class="ic-user" href="{{ post.author_url }}">
+                                            <i class="fa fa-user"></i>
+                                            {{ post.author_name }}
+                                        </a>
+                                        <span class="mg-9-10">|</span>
+                                        <span class="date-creat">
+                                            <i class="fa fa-clock-o"></i>
+                                                {{ post.s_publish_time }}
+                                        </span>
+                                    </div>
+                                    <div class="clear"></div>
+                                    <div class="info-featured-sapo">
+                                        <a href="{{ post.url }}" class="img-sp">
+                                            <amp-img lightbox src="{{ post.avatar }}" alt="{{ post.title }}" width="130" height="73" layout="responsive"></amp-img>
+                                        </a>
+                                    </div>
+                                    <div class="info-car">
+                                        <p>{{ post.sapo }}</p>
+                                    </div>
+                                    <div class="clear"></div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </section><!-- END: Featured Stories -->
+        {% endif %}
+
+        <section class="list-new2 pd-top-25 pd-bottom-28">
+            <div class="main">
+                {% if carsReviewCate is defined %}
+                    <h2 class="title-18">{{ carsReviewCate.name }}</h2>
+                    <div class="view-all">
+                        <a href="{{ carsReviewCate.url }}">View All <i class="icon-right-open-big"></i></a>
+                    </div>
+                    <div class="clear"></div>
+                    <ul class="list-news-2">
+                        {% for post in carsReviewPosts %}
+                            <li>
+                                <a href="{{ post.url }}" class="img-sp" title="{{ post.title }}">
+                                    <amp-img lightbox src="{{ post.avatar_amp }}" alt="{{ post.title }}" width="464" height="260" layout="responsive"></amp-img>
+                                </a>
+                                <div class="info-car">
+                                    <h3><a href="{{ post.url }}" class="name-pro"
+                                           title="{{ post.title }}">{{ post.title }}</a></h3>
+                                    <a class="ic-user" href="{{ post.author_url }}"><i class="fa fa-user"></i> {{ post.author_name }}</a><span
+                                            class="mg-9-10">|</span>
+                                    <span class="date-creat"> <i class="fa fa-clock-o"></i> {{ post.s_publish_time }}</span>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+        </section>
+
+        {% if bikesReviewCate is defined %}
+            <section class="list-new2 pd-top-25 pd-bottom-28">
+                <div class="main">
+                    <h2 class="title-18">{{ bikesReviewCate.name }}</h2>
+                    <div class="view-all"><a href="{{ bikesReviewCate.url }}">View All <i class="icon-right-open-big"></i> </a></div>
+                    <div class="clear"></div>
+                    <ul class="list-news-2">
+                        {% for post in bikesReviewPosts %}
+                            <li>
+                                <a href="{{ post.url }}" class="img-sp" title="{{ post.title }}">
+                                    <amp-img lightbox src="{{ post.avatar_amp }}" alt="{{ post.title }}" width="464" height="260" layout="responsive"></amp-img>
+                                </a>
+                                <div class="info-car">
+                                    <h3><a href="{{ post.url }}" class="name-pro"
+                                           title="{{ post.title }}">{{ post.title }}</a></h3>
+                                    <a class="ic-user" href="{{ post.author_url }}"><i
+                                                class="fa fa-user"></i> {{ post.author_name }}</a><span
+                                            class="mg-9-10">|</span>
+                                    <span class="date-creat"> <i
+                                                class="fa fa-clock-o"></i> {{ post.s_publish_time }}</span>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </section>
+        {% endif %}
+
+        {% if mostViewVideos|length > 0 %}
+            <section class="video pd-top-25 pd-bottom-28">
+                <div class="main">
+                    <div class="infoTitleVideoMobile">
+                        <h2 class="title-18">Videos </h2>
+                        <div class="view-all1"><a href="/video">View All</a></div>
+                    </div>
+                    <div class="clear"></div>
+                    <ul class="list-video">
+                        {% for video in mostViewVideos %}
+                            {% if loop.index == 1 %}
+                                <li class="first-video">
+                                    <div>
+                                        <a href="{{ video['link'] }}" class="img-sp">
+                                            <amp-img lightbox src="{{ video['firstAvatarMobile'] }}" width="398" height="224" layout="responsive"></amp-img>
+                                            <span class="icon-play"></span>
+                                        </a>
+                                    </div>
+                                    <div class="info-car">
+                                        <h3><a href="{{ video['link'] }}" class="name-pro">{{ video['title'] }}</a></h3>
+                                        <span class="date-creat"> <i class="fa fa-clock-o"></i> {{ video['created_date'] }} </span>
+                                    </div>
+                                </li>
+                            {% else %}
+                                <li class="list-second-video">
+                                    <div>
+                                        <a href="{{ video['link'] }}" class="amp-img-sp">
+                                            <amp-img lightbox src="{{  video['avatar_mobile'] }}" width="97" height="59" layout="responsive"></amp-img>
+                                            <span class="icon-play"></span>
+                                        </a>
+                                    </div>
+                                    <div class="info-car">
+                                        <h3><a href="{{ video['link'] }}" class="name-pro">{{ video['title'] }}</a></h3>
+                                        <span class="date-creat"> <i class="fa fa-clock-o"></i> {{ video['created_date'] }} </span>
+                                    </div>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </section>
+        {% endif %}
+    </div>
+{% endblock %}

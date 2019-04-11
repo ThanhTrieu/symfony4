@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+{% for item in data['news_list'] %}
+    <url><loc>{{ data.site_map_domain_local ~ item.url }}</loc>
+        <changefreq>hourly</changefreq>
+        <priority>0.6</priority>
+        <image:image>
+            <image:loc>{{ item.avatar }}</image:loc>
+            <image:title><![CDATA[{{ item.title }}]]></image:title>
+        </image:image>
+        <news:news>
+            <news:publication>
+                <news:name>Indian Autos Blog</news:name>
+                <news:language>en</news:language>
+            </news:publication>
+            <news:genres></news:genres>
+            <news:publication_date>{{ item.s_publish_time }}</news:publication_date>
+            <news:title><![CDATA[{{ item.title }}]]></news:title>
+            <news:keywords><![CDATA[]]></news:keywords>
+        </news:news>
+    </url>
+{% endfor %}
+</urlset>
+{#TrieuNT edited#}

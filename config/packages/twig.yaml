@@ -1,0 +1,14 @@
+twig:
+    default_path: '%kernel.project_dir%/src/templates'
+    debug: '%kernel.debug%'
+    strict_variables: '%kernel.debug%'
+    globals:
+            domain: '%domain%'
+            static_url: '%static_url%'
+            media_version: '%media_version%'
+            media_url: '%media_url%'
+            site_name: '%site_name%'
+            home_title: '%home_title%'
+            site_desc: '%site_desc%'
+            facebook_app_id: '%facebook_app_id%'
+

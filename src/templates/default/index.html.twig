@@ -1,0 +1,266 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+    <div class="banner-slide">
+        <div class="full-slider">
+            <div class="full-slider-inner">
+                <div class="parent-tmp col-3 hide-mb">
+                    {% for post in focusPosts.focusTopLeft %}
+                    <div class="item" data-parent="col-3" data-group="1">
+                        <a href="{{ post.url }}"
+                           title="{{ post.title }}"
+                           class="link"
+                        >
+                            <img src="{{ post.avatar }}" alt="{{ post.title }}" />
+                        </a>
+                        <div class="box-text">
+                            <h2 class="title-new">
+                                <a href="{{ post.url }}" title="{{ post.title }}">
+                                    {{ post.title|raw }}
+                                </a>
+                            </h2>
+                            <p class="time">{{ post.s_publish_time }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="parent-tmp col-4">
+                    {% for post in focusPosts.focusTopCenter %}
+                    <div class="item {% if loop.index != 1 %} hidden{% endif %}" data-parent="col-4" data-group="1">
+                        <a href="{{ post.url }}"
+                           title="{{ post.title }}"
+                           class="link"
+                        >
+                            <img src="{{ post.avatar }}"
+                                 alt="{{ post.title }}"
+                            />
+                        </a>
+                        <div class="box-text">
+                            <h2 class="title-new">
+                                <a href="{{ post.url }}" title="{{ post.title }}">
+                                    {{ post.title }}
+                                </a>
+                            </h2>
+                            <p class="time">{{ post.s_publish_time }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="parent-tmp col-3">
+                    {% for post in focusPosts.focusTopRight %}
+                    <div class="item" data-parent="col-3" data-group="2">
+                        <a href="{{ post.url }}" title="{{ post.title }}" class="link">
+                            <img src="{{ post.avatar }}"
+                                 alt="{{ post.title }}"
+                            /></a>
+                        <div class="box-text">
+                            <h2 class="title-new">
+                                <a href="{{ post.url }}" title="{{ post.title }}">
+                                    {{ post.title }}
+                                </a>
+                            </h2>
+                            <p class="time">{{ post.s_publish_time }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end banner-->
+
+    <section class="list-new1">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="list-car-left">
+                        <h2 class="title-30">ताज़ा खबर</h2>
+                        <ul id="pnlPostList" class="list-car-home">
+                            {{ include('post/widget/lastest-posts.html.twig') }}
+                        </ul>
+                        {% if loadMoreToken %}
+                            <div class="text-center">
+                                <button id="btnLastestMore" class="btn btn-all" data-token="{{ loadMoreToken }}" data-url="{{ path('lastest_post_ajax') }}">और देखें</button>
+                                <img id="imgMoreLoading" class="hidden" src="/images/loading.gif" title="Please wait while loading data" />
+                            </div>
+                        {% endif %}
+                    </div>
+                    <!--end section populer-->
+                </div>
+                <div class="col-md-3 col-right border-top">
+                    <h2 class="title-24">सबसे पसन्दीदाह</h2>
+                    <div class="list-car-right ">
+                        <ul class="list-new-right list-car-home">
+                            {% for post in mostViewPosts %}
+                                <li>
+                                    <a href="{{ post.url }}" class="img-sp" title="{{ post.title }}">
+                                        <img src="{{ post.avatar }}" alt="{{ post.title }}" />
+                                    </a>
+                                    <div class="info-car">
+                                        <h3><a href="{{ post.url }}" class="name-pro" title="{{ post.title }}">{{ post.title }}</a></h3>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <!--end section populer-->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% if featuredStoriesCate is defined %}
+    <section class="list-new2 border-top">
+        <div class="container">
+            <h2 class="title-30">
+                प्रमुख कहानियां
+                <div class="view-all">
+                    <a href="/featured">सब देखें <i class="icon-right-open-big"></i> </a>
+                </div>
+            </h2>
+            <ul class="list-news-2 list-car-col row featuredStoriesCate">
+                {% for post in featuredStoriesPosts %}
+                <li class="col-xs-12 col-sm-6 col-md-4">
+                    <a href="{{ post.url }}" class="img-sp" title="{{ post.title }}">
+                        <img src="{{ post.avatar }}" alt="{{ post.title }}" />
+                    </a>
+                    <div class="info-car" style="height: 190px;">
+                        <h3><a href="{{ post.url }}" class="name-pro" title="{{ post.title }}">{{ post.title|raw }}</a></h3>
+                        <span class="ic-user"><i class="icon-user"></i> {{ post.author_name }} </span><span class="mg-9-10">|</span
+                        ><span class="date-creat"> <i class="icon-clock"></i> {{ post.s_publish_time }} </span>
+                        <div class="short-info" style="height: 120px">
+                            {{ post.sapo|raw }}
+                        </div>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+    {% endif %}
+
+    {% if carsReviewCate is defined and bikesReviewCate  is defined %}
+    <section class="list-new3 border-top">
+        <div class="container">
+            <div class="row ">
+                <div class="col-sm-12 col-md-6">
+                    <h2 class="title-30 mg-bottom-20">कार समीक्षा</h2>
+
+                    <div class="big-n">
+                        <a href="{{ firstCarsReviewPosts.url }}" class="img-sp" title="{{ firstCarsReviewPosts.title }}">
+                            <img src="{{ firstCarsReviewPosts.avatar }}" alt="{{ firstCarsReviewPosts.title }}" />
+                        </a>
+                        <span class="info-car">
+                            <h3><a href="{{ firstCarsReviewPosts.url }}" class="name-pro">{{ firstCarsReviewPosts.title|raw }}</a></h3>
+                            <span class="ic-user"><i class="icon-user"></i> {{ firstCarsReviewPosts.author_name }}</span>
+                            <span class="mg-9-10">|</span>
+                            <span class="date-creat"> <i class="icon-clock"></i> {{ firstCarsReviewPosts.s_publish_time }}</span>
+                            <p class="short-info">
+                                {{ firstCarsReviewPosts.sapo|raw }}
+                            </p>
+                        </span>
+                    </div>
+                    <div class="sld-news cars-review-item">
+                        <ul id="pnlCarsReview" class="list-news-33 cars-review-posts">
+                            {% for item in carsReviewPosts %}
+                            <li>
+                                <div class="row">
+                                    <a href="{{ item.url }}" class="img-sp col-sm-4" title="{{ item.title }}">
+                                        <img src="{{ item.avatar }}" alt="{{ item.title }}" />
+                                    </a>
+                                    <span class="info-car col-sm-8">
+                                        <h3>
+                                            <a href="{{ item.url }}" class="name-pro">
+                                                {{ item.title }}
+                                            </a>
+                                        </h3>
+                                        <span class="ic-user"><i class="icon-user"></i> {{ item.author_name }}</span><span class="mg-9-10">|</span><span class="date-creat"> <i class="icon-clock"></i> {{ item.s_publish_time }}</span>
+                                    </span>
+                                </div>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        <div class="view-all">
+                            <a href="{{ carsReviewCate.url }}" title="{{ carsReviewCate.name }}">सब देखें <i class="icon-right-open-big"></i> </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-6">
+                    <h2 class="title-30 mg-bottom-20">बाइक समीक्षा</h2>
+                    <div class="big-n">
+                        <a href="{{ firstBikeReviewPosts.url }}" class="img-sp" title="{{ firstBikeReviewPosts.title }}">
+                            <img src="{{ firstBikeReviewPosts.avatar }}" alt="{{ firstBikeReviewPosts.title }}" />
+                        </a>
+                        <span class="info-car">
+                          <h3><a href="{{ firstBikeReviewPosts.url }}" class="name-pro">{{ firstBikeReviewPosts.title }}</a></h3>
+                          <span class="ic-user"><i class="icon-user"></i> {{ firstBikeReviewPosts.author_name }}</span><span class="mg-9-10">|</span><span class="date-creat"> <i class="icon-clock"></i>  {{ firstBikeReviewPosts.s_publish_time }}</span>
+                          <p class="short-info">
+                            {{ firstBikeReviewPosts.sapo|raw }}
+                          </p>
+                        </span>
+                    </div>
+                    <div class="sld-news cars-review-item">
+                        <ul id="pnlBikesReview" class="list-news-33 cars-review-posts">
+                            {% for item in bikesReviewPosts %}
+                            <li>
+                                <div class="row">
+                                    <a href="{{ item.url }}" class="img-sp col-sm-4" title="{{ item.title }}">
+                                        <img src="{{ item.avatar }}" alt="{{ item.title }}" />
+                                    </a>
+                                    <span class="info-car col-sm-8">
+                                        <h3><a href="{{ item.url }}" class="name-pro">{{ item.title }}</a></h3><span class="ic-user"><i class="icon-user"></i> {{ item.author_name }}</span><span class="mg-9-10">|</span><span class="date-creat"> <i class="icon-clock"></i>{{ item.s_publish_time }}</span>
+                                    </span>
+                                </div>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        <div class="view-all">
+                            <a href="{{ bikesReviewCate.url }}" title="{{ bikesReviewCate.name }}">सब देखें <i class="icon-right-open-big"></i> </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    {% if firstVideo is not null %}
+    <section class="video">
+        <div class="container">
+            <h2 class="title-30">
+                Videos
+                <span class="view-all1"><a href="/video">सब देखेंl <i class="icon-right-open-big"></i></a></span>
+            </h2>
+            <div class="row list-video">
+                <div class="col-sm-12 col-md-7 video-big">
+                    <a href="{{ firstVideo.link }}" class="img-sp" title="{{ firstVideo.title }}">
+                        <img src="{{ firstVideo.firstAvatar }}" alt="{{ firstVideo.title }}" />
+                        <div class="icon-play"></div>
+                    </a>
+                    <div class="info-car">
+                        <h3><a href="{{ firstVideo.link }}" class="name-pro">{{ firstVideo.title }}</a></h3>
+                        <span class="ic-user"
+                        ><span class="date-creat"> <i class="icon-clock"></i> {{ firstVideo.created_date }}</span></span
+                        >
+                    </div>
+                </div>
+                <ul class="col-sm-12 col-md-5">
+                    {% for item in mostViewVideos %}
+                    <li class="row">
+                        <a href="{{ item.link }}" class="img-sp col-xs-5" title="{{ item.title }}">
+                            <img src="{{ item.avatar }}" alt="{{ item.title }}" />
+                            <div class="icon-play"></div>
+                        </a>
+                        <div class="info-car">
+                            <h3><a href="{{ item.link }}" class="name-pro">{{ item.title }}</a></h3>
+                            <span class="ic-user"><span class="date-creat"> <i class="icon-clock"></i> {{ item.created_date }}</span></span>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!--end list-video-->
+    {% endif %}
+{% endblock %}
